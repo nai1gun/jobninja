@@ -1,0 +1,21 @@
+{
+  "generator-jhipster": {
+    "baseName": "jhtest",
+    "packageName": "com.nailgun.jhtest",
+    "packageFolder": "com/nailgun/jhtest",
+    "authenticationType": "oauth2",
+    "hibernateCache": "no",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "mongodb",
+    "devDatabaseType": "mongodb",
+    "prodDatabaseType": "mongodb",
+    "searchEngine": "no",
+    "useCompass": false,
+    "buildTool": "maven",
+    "frontendBuilder": "grunt",
+    "javaVersion": "8",
+    "enableTranslation": true,
+    "rememberMeKey": "d0990584e94a35e34e8a7a490f475725120cd661"
+  }
+}
