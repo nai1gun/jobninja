@@ -8,6 +8,8 @@ angular.module('jhtestApp')
                 method: 'GET',
                 transformResponse: function (data) {
                     data = angular.fromJson(data);
+                    data.created = DateUtils.convertDateTimeFromServer(data.created);
+                    data.edited = DateUtils.convertDateTimeFromServer(data.edited);
                     return data;
                 }
             },

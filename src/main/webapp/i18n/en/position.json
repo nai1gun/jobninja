@@ -15,9 +15,12 @@
             "detail": {
                 "title": "Position"
             },
-            "title": "Title",
+            "name": "Name",
             "link": "Link",
-            "state": "State"
+            "state": "State",
+            "created": "Created",
+            "edited": "Edited",
+            "notes": "Notes"
         }
     }
 }

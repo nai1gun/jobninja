@@ -60,7 +60,7 @@ angular.module('jhtestApp')
                         size: 'lg',
                         resolve: {
                             entity: function () {
-                                return {title: null, link: null, state: null, id: null};
+                                return {name: null, link: null, state: null, created: null, edited: null, notes: null, id: null};
                             }
                         }
                     }).result.then(function(result) {

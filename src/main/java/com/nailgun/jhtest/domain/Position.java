@@ -1,5 +1,10 @@
 package com.nailgun.jhtest.domain;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.nailgun.jhtest.domain.util.CustomDateTimeDeserializer;
+import com.nailgun.jhtest.domain.util.CustomDateTimeSerializer;
+import org.joda.time.DateTime;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -19,8 +24,8 @@ public class Position implements Serializable {
 
 
     
-    @Field("title")
-    private String title;
+    @Field("name")
+    private String name;
 
 
     
@@ -32,6 +37,25 @@ public class Position implements Serializable {
     @Field("state")
     private String state;
 
+
+    
+    @JsonSerialize(using = CustomDateTimeSerializer.class)
+    @JsonDeserialize(using = CustomDateTimeDeserializer.class)
+    @Field("created")
+    private DateTime created;
+
+
+    
+    @JsonSerialize(using = CustomDateTimeSerializer.class)
+    @JsonDeserialize(using = CustomDateTimeDeserializer.class)
+    @Field("edited")
+    private DateTime edited;
+
+
+    
+    @Field("notes")
+    private String notes;
+
     public String getId() {
         return id;
     }
@@ -40,12 +64,12 @@ public class Position implements Serializable {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLink() {
@@ -62,6 +86,30 @@ public class Position implements Serializable {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public DateTime getCreated() {
+        return created;
+    }
+
+    public void setCreated(DateTime created) {
+        this.created = created;
+    }
+
+    public DateTime getEdited() {
+        return edited;
+    }
+
+    public void setEdited(DateTime edited) {
+        this.edited = edited;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     @Override
@@ -89,9 +137,12 @@ public class Position implements Serializable {
     public String toString() {
         return "Position{" +
                 "id=" + id +
-                ", title='" + title + "'" +
+                ", name='" + name + "'" +
                 ", link='" + link + "'" +
                 ", state='" + state + "'" +
+                ", created='" + created + "'" +
+                ", edited='" + edited + "'" +
+                ", notes='" + notes + "'" +
                 '}';
     }
 }

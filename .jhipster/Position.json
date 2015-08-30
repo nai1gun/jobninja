@@ -3,7 +3,7 @@
     "fields": [
         {
             "fieldId": 1,
-            "fieldName": "title",
+            "fieldName": "name",
             "fieldType": "String",
             "fieldValidateRules": []
         },
@@ -16,8 +16,23 @@
             "fieldId": 3,
             "fieldName": "state",
             "fieldType": "String"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "created",
+            "fieldType": "DateTime"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "edited",
+            "fieldType": "DateTime"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "notes",
+            "fieldType": "String"
         }
     ],
     "dto": "no",
-    "pagination": "no"
+    "pagination": "pagination"
 }

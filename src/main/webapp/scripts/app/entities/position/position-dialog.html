@@ -14,9 +14,9 @@
         </div>
 
         <div class="form-group">
-            <label translate="jhtestApp.position.title" for="field_title">Title</label>
-            <input type="text" class="form-control" name="title" id="field_title"
-                    ng-model="position.title"
+            <label translate="jhtestApp.position.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="position.name"
                     >
 
         </div>
@@ -31,6 +31,27 @@
             <label translate="jhtestApp.position.state" for="field_state">State</label>
             <input type="text" class="form-control" name="state" id="field_state"
                     ng-model="position.state"
+                    >
+
+        </div>
+        <div class="form-group">
+            <label translate="jhtestApp.position.created" for="field_created">Created</label>
+            <input type="datetime-local" class="form-control" name="created" id="field_created"
+                    ng-model="position.created" ng-model-options="{timezone: 'UTC'}"
+                    >
+
+        </div>
+        <div class="form-group">
+            <label translate="jhtestApp.position.edited" for="field_edited">Edited</label>
+            <input type="datetime-local" class="form-control" name="edited" id="field_edited"
+                    ng-model="position.edited" ng-model-options="{timezone: 'UTC'}"
+                    >
+
+        </div>
+        <div class="form-group">
+            <label translate="jhtestApp.position.notes" for="field_notes">Notes</label>
+            <input type="text" class="form-control" name="notes" id="field_notes"
+                    ng-model="position.notes"
                     >
 
         </div>

@@ -4,8 +4,10 @@ import com.codahale.metrics.annotation.Timed;
 import com.nailgun.jhtest.domain.Position;
 import com.nailgun.jhtest.repository.PositionRepository;
 import com.nailgun.jhtest.web.rest.util.HeaderUtil;
+import com.nailgun.jhtest.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -73,9 +75,12 @@ public class PositionResource {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<Position> getAll() {
-        log.debug("REST request to get all Positions");
-        return positionRepository.findAll();
+    public ResponseEntity<List<Position>> getAll(@RequestParam(value = "page" , required = false) Integer offset,
+                                  @RequestParam(value = "per_page", required = false) Integer limit)
+        throws URISyntaxException {
+        Page<Position> page = positionRepository.findAll(PaginationUtil.generatePageRequest(offset, limit));
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/positions", offset, limit);
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
     /**
