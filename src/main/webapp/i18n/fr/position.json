@@ -1,0 +1,21 @@
+{
+    "jhtestApp": {
+        "position" : {
+            "home": {
+                "title": "Positions",
+                "createLabel": "Créer un nouveau Position",
+                "createOrEditLabel": "Créer ou éditer un Position"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Position {{ id }} ?"
+            },
+            "detail": {
+                "title": "Position"
+            },
+            "title": "Title",
+            "link": "Link",
+            "state": "State"
+        }
+    }
+}
+

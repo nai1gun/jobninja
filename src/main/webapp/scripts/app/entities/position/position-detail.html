@@ -1,0 +1,46 @@
+
+<div>
+    <h2><span translate="jhtestApp.position.detail.title">Position</span> {{position.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="jhtestApp.position.title">Title</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{position.title}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="jhtestApp.position.link">Link</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{position.link}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="jhtestApp.position.state">State</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{position.state}}" readonly>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="position"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>
