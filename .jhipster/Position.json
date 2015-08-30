@@ -1,0 +1,23 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "title",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "link",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "state",
+            "fieldType": "String"
+        }
+    ],
+    "dto": "no",
+    "pagination": "no"
+}
