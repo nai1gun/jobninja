@@ -5,7 +5,7 @@ angular.module('jhtestApp')
         $stateProvider
             .state('home', {
                 parent: 'site',
-                url: '/',
+                url: '/home',
                 data: {
                     roles: []
                 },
