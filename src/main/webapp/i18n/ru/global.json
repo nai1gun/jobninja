@@ -75,8 +75,8 @@
     },
     "entity": {
         "action": {
-            "addblob": "Add blob",
-            "addimage": "Add image",
+            "addblob": "Добавить blob",
+            "addimage": "Добавить картинку",
             "back": "Назад",
             "cancel": "Отмена",
             "delete": "Удалить",
@@ -92,17 +92,17 @@
             "title": "Подтвердите операцию удаления"
         },
         "validation": {
-            "required": "This field is required.",
-            "minlength": "This field is required to be at least {{min}} characters.",
-            "maxlength": "This field cannot be longer than {{max}} characters.",
-            "min": "This field should be more than {{min}}.",
-            "max": "This field cannot be more than {{max}}.",
-            "minbytes": "This field should be more than {{min}} bytes.",
-            "maxbytes": "This field cannot be more than {{max}} bytes.",
-            "pattern": "This field should follow pattern {{pattern}}.",
-            "number": "This field should be a number.",
-            "datetimelocal": "This field should be a date and time."
+            "required": "Это поле обязательно.",
+            "minlength": "В этом поле должно быть как минимум {{min}} символов.",
+            "maxlength": "Это поле не может быть длиннее, чем {{max}} символов.",
+            "min": "В этом поле должно быть более {{min}}.",
+            "max": "В этом поле не может быть более{{max}}.",
+            "minbytes": "В этом поле должно быть более {{min}} байт.",
+            "maxbytes": "В этом поле не может быть более {{max}} байт.",
+            "pattern": "Это поле дожно соответствовать паттерну {{pattern}}.",
+            "number": "Это поле должно содержать число.",
+            "datetimelocal": "Это поле должно содержать дату и время."
         }
     },
-    "footer": "Это ваш футтер"
+    "footer": "&copy; Job Ninja 2015"
 }
