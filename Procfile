@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -jar target/jhtest-0.0.1-SNAPSHOT.war
+web: java $JAVA_OPTS -jar target/*.war
