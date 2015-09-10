@@ -1,4 +1,4 @@
-## A tool for a joob seeker
+## A tool for a job seeker
 
 #### Requirements to install
 * Java 8
