@@ -9,9 +9,11 @@ spring:
         active: prod
     data:
         mongodb:
-            host: localhost
-            port: 27017
-            database: jhtest
+            host: ds055862.mongolab.com
+            port: 55862
+            database: heroku_0bftrxqk
+            username: jobninja
+            password: asdqwe
     thymeleaf:
         mode: XHTML
         cache: true
