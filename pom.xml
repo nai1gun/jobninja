@@ -572,6 +572,12 @@
         </profile>
         <profile>
             <id>prod</id>
+            <activation>
+                <property>
+                    <!-- For Heroku -->
+                    <name>env.DYNO</name>
+                </property>
+            </activation>
             <build>
                 <plugins>
                     <plugin>
