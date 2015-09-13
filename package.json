@@ -48,7 +48,8 @@
     "requirejs": "2.1",
     "jasmine-core": "2.1.0",
     "zeparser": "0.0.7",
-    "wiredep": "2.2.2"
+    "wiredep": "2.2.2",
+    "bower": "1.5.2"
   },
   "engines": {
     "node": ">=0.12.0"
