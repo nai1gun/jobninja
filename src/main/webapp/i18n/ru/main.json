@@ -1,6 +1,6 @@
 {
     "main": {
-        "title": "Добро пожаловать, Java Hipster!",
+        "title": "Job Ninja!",
         "subtitle": "Это ваша домашняя страница",
         "logged": {
             "message": "Вы вошли как пользователь \"{{username}}\"."

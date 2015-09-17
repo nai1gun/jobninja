@@ -41,25 +41,19 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th translate="global.field.id">ID</th>
                     <th translate="jhtestApp.position.name">Name</th>
                     <th translate="jhtestApp.position.link">Link</th>
                     <th translate="jhtestApp.position.state">State</th>
-                    <th translate="jhtestApp.position.created">Created</th>
                     <th translate="jhtestApp.position.edited">Edited</th>
-                    <th translate="jhtestApp.position.notes">Notes</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="position in positions">
-                    <td><a ui-sref="position.detail({id:position.id})">{{position.id}}</a></td>
                     <td>{{position.name}}</td>
                     <td><a ng-href="{{position.link}}" target="_blank">{{position.link}}</a></td>
                     <td>{{position.state}}</td>
-                    <td>{{position.created}}</td>
                     <td>{{position.edited}}</td>
-                    <td>{{position.notes}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="position.detail({id:position.id})"
