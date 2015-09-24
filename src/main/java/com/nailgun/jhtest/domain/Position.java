@@ -1,11 +1,14 @@
 package com.nailgun.jhtest.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.nailgun.jhtest.domain.util.CustomDateTimeDeserializer;
 import com.nailgun.jhtest.domain.util.CustomDateTimeSerializer;
 import org.joda.time.DateTime;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -22,7 +25,10 @@ public class Position implements Serializable {
     @Id
     private String id;
 
-
+    @DBRef(lazy = true)
+    @Indexed
+    @JsonIgnore
+    private User user;
     
     @Field("name")
     private String name;
@@ -110,6 +116,14 @@ public class Position implements Serializable {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

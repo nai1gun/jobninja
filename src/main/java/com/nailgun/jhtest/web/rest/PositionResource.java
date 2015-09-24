@@ -2,7 +2,9 @@ package com.nailgun.jhtest.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.nailgun.jhtest.domain.Position;
+import com.nailgun.jhtest.domain.User;
 import com.nailgun.jhtest.repository.PositionRepository;
+import com.nailgun.jhtest.service.UserService;
 import com.nailgun.jhtest.web.rest.util.HeaderUtil;
 import com.nailgun.jhtest.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
@@ -32,6 +34,9 @@ public class PositionResource {
     @Inject
     private PositionRepository positionRepository;
 
+    @Inject
+    private UserService userService;
+
     /**
      * POST  /positions -> Create a new position.
      */
@@ -44,6 +49,8 @@ public class PositionResource {
         if (position.getId() != null) {
             return ResponseEntity.badRequest().header("Failure", "A new position cannot already have an ID").body(null);
         }
+        User currentUser = userService.getUserWithAuthorities();
+        position.setUser(currentUser);
         Position result = positionRepository.save(position);
         return ResponseEntity.created(new URI("/api/positions/" + result.getId()))
                 .headers(HeaderUtil.createEntityCreationAlert("position", result.getId().toString()))
@@ -78,7 +85,8 @@ public class PositionResource {
     public ResponseEntity<List<Position>> getAll(@RequestParam(value = "page" , required = false) Integer offset,
                                   @RequestParam(value = "per_page", required = false) Integer limit)
         throws URISyntaxException {
-        Page<Position> page = positionRepository.findAll(PaginationUtil.generatePageRequest(offset, limit));
+        User currentUser = userService.getUserWithAuthorities();
+        Page<Position> page = positionRepository.findByUser(currentUser.getId(), PaginationUtil.generatePageRequest(offset, limit));
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/positions", offset, limit);
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
