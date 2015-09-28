@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('jhtestApp').controller('PositionDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Position',
-        function($scope, $stateParams, $modalInstance, entity, Position) {
+    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Position', 'DateUtils',
+        function($scope, $stateParams, $modalInstance, entity, Position, DateUtils) {
 
         $scope.position = entity;
         $scope.load = function(id) {
@@ -17,9 +17,11 @@ angular.module('jhtestApp').controller('PositionDialogController',
         };
 
         $scope.save = function () {
+            $scope.position.edited = DateUtils.convertLocaleDateToServer(new Date());
             if ($scope.position.id != null) {
                 Position.update($scope.position, onSaveFinished);
             } else {
+                $scope.position.created = DateUtils.convertLocaleDateToServer(new Date());
                 Position.save($scope.position, onSaveFinished);
             }
         };

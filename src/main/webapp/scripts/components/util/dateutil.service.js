@@ -4,11 +4,8 @@ angular.module('jhtestApp')
     .service('DateUtils', function () {
       this.convertLocaleDateToServer = function(date) {
         if (date) {
-          var utcDate = new Date();
-          utcDate.setUTCDate(date.getDate());
-          utcDate.setUTCMonth(date.getMonth());
-          utcDate.setUTCFullYear(date.getFullYear());
-          return utcDate;
+          return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(),
+              date.getHours(), date.getMinutes(), date.getSeconds()));
         } else {
           return null;
         }
@@ -22,7 +19,7 @@ angular.module('jhtestApp')
       };
       this.convertDateTimeFromServer = function(date) {
         if (date) {
-          return new Date(date);   
+          return new Date(date);
         } else {
           return null;
         }
