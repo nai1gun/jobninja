@@ -69,6 +69,8 @@ public class PositionResource {
         if (position.getId() == null) {
             return create(position);
         }
+        User currentUser = userService.getUserWithAuthorities();
+        position.setUser(currentUser);
         Position result = positionRepository.save(position);
         return ResponseEntity.ok()
                 .headers(HeaderUtil.createEntityUpdateAlert("position", position.getId().toString()))
