@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('jhtestApp').controller('PositionDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Position', 'DateUtils',
-        function($scope, $stateParams, $modalInstance, entity, Position, DateUtils) {
+    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Position', 'DateUtils', 'PositionState',
+        function($scope, $stateParams, $modalInstance, entity, Position, DateUtils, PositionState) {
 
         $scope.position = entity;
         $scope.load = function(id) {
@@ -29,4 +29,8 @@ angular.module('jhtestApp').controller('PositionDialogController',
         $scope.clear = function() {
             $modalInstance.dismiss('cancel');
         };
+
+        PositionState.getAll(function(states) {
+            $scope.states = states;
+        });
 }]);

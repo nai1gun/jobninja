@@ -18,7 +18,8 @@
             "name": "Name",
             "link": "Link",
             "state": "State",
-            "created": "Created",
+            "defaultStates": "Created,Applied,Got response,Invited for interview,Got offer,They refused,I refused",
+            "createdAt": "Created",
             "edited": "Edited",
             "notes": "Notes"
         }
