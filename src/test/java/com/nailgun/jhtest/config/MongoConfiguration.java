@@ -15,7 +15,7 @@ public class MongoConfiguration {
     public Mongo mongo() throws IOException {
         System.setProperty("DB.TRACE","true");
         return new EmbeddedMongoBuilder()
-                .version("2.6.0")
+                .version("3.0.6")
                 .bindIp("127.0.0.1")
                 .port(allocateRandomPort())
                 .build();
