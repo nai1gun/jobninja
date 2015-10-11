@@ -2,7 +2,7 @@
     "jhtestApp": {
         "position" : {
             "home": {
-                "title": "Должность",
+                "title": "Должности",
                 "createLabel": "Создать должность",
                 "createOrEditLabel": "Создать или редактировать должность"
             },

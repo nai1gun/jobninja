@@ -27,8 +27,7 @@ angular.module('jhtestApp')
  They are written in English to avoid character encoding issues (not a perfect solution)
  */
     .constant('LANGUAGES', [
-        'en', 'fr'
-        ,'ru'
+        'en', 'ru'
         //JHipster will add new languages here
     ]
 );
