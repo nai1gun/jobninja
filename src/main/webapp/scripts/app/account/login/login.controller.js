@@ -15,8 +15,8 @@ angular.module('jhtestApp')
                 rememberMe: $scope.rememberMe
             }).then(function () {
                 $scope.authenticationError = false;
-                if ($rootScope.previousStateName === 'register') {
-                    $state.go('home');
+                if ($rootScope.previousStateName === 'register' || $rootScope.previousStateName === 'home') {
+                    $state.go('position');
                 } else {
                     $rootScope.back();
                 }

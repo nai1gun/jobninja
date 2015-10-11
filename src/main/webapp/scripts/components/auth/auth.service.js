@@ -10,7 +10,7 @@ angular.module('jhtestApp')
                 AuthServerProvider.login(credentials).then(function (data) {
                     // retrieve the logged account information
                     Principal.identity(true).then(function(account) {
-                      
+
                         // After the login the language will be changed to
                         // the language selected by the user during his registration
                         $translate.use(account.langKey);
@@ -48,8 +48,8 @@ angular.module('jhtestApp')
                                 $rootScope.returnToState = $rootScope.toState;
                                 $rootScope.returnToStateParams = $rootScope.toStateParams;
 
-                                // now, send them to the signin state so they can log in
-                                $state.go('login');
+                                // now, send them to the home state so they can log in
+                                $state.go('home');
                             }
                         }
                     });
