@@ -3,6 +3,7 @@ package com.nailgun.jhtest.web.rest.util;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpHeaders;
 
 import java.net.URI;
@@ -27,13 +28,19 @@ public class PaginationUtil {
     public static final int MAX_LIMIT = 100;
 
     public static Pageable generatePageRequest(Integer offset, Integer limit) {
+        return generatePageRequest(offset, limit, null);
+    }
+
+    public static Pageable generatePageRequest(Integer offset, Integer limit, Sort.Direction direction,
+                                               String... properties) {
         if (offset == null || offset < MIN_OFFSET) {
             offset = DEFAULT_OFFSET;
         }
         if (limit == null || limit > MAX_LIMIT) {
             limit = DEFAULT_LIMIT;
         }
-        return new PageRequest(offset - 1, limit);
+        Sort sort = properties == null || properties.length == 0 ? null: new Sort(direction, properties);
+        return new PageRequest(offset - 1, limit, sort);
     }
 
     public static HttpHeaders generatePaginationHttpHeaders(Page<?> page, String baseUrl, Integer offset, Integer limit)
