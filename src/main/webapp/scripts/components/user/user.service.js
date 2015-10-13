@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .factory('User', function ($resource) {
+    .factory('User', ['$resource', function ($resource) {
         return $resource('api/users/:login', {}, {
                 'query': {method: 'GET', isArray: true},
                 'get': {
@@ -12,4 +12,4 @@ angular.module('jhtestApp')
                     }
                 }
             });
-        });
+        }]);

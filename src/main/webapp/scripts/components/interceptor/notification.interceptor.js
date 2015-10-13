@@ -1,7 +1,7 @@
  'use strict';
 
 angular.module('jhtestApp')
-    .factory('notificationInterceptor', function ($q, AlertService) {
+    .factory('notificationInterceptor', ['$q', 'AlertService', function ($q, AlertService) {
         return {
             response: function(response) {
                 var alertKey = response.headers('X-jhtestApp-alert');
@@ -11,4 +11,4 @@ angular.module('jhtestApp')
                 return response;
             },
         };
-    });
+    }]);

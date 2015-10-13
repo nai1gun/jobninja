@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .factory('Position', function ($resource, DateUtils) {
+    .factory('Position', ['$resource', 'DateUtils', function ($resource, DateUtils) {
         return $resource('api/positions/:id', {}, {
             'query': { method: 'GET', isArray: true},
             'get': {
@@ -15,4 +15,4 @@ angular.module('jhtestApp')
             },
             'update': { method:'PUT' }
         });
-    });
+    }]);

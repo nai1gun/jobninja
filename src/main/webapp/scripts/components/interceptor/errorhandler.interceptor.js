@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .factory('errorHandlerInterceptor', function ($q, $rootScope) {
+    .factory('errorHandlerInterceptor', ['$q', '$rootScope', function ($q, $rootScope) {
         return {
             'responseError': function (response) {
                 if (!(response.status == 401 && response.data.path.indexOf("/api/account") == 0 )){
@@ -10,4 +10,4 @@ angular.module('jhtestApp')
                 return $q.reject(response);
             }
         };
-    });
+    }]);

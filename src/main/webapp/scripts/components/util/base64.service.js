@@ -75,7 +75,7 @@ angular.module('jhtestApp')
             }
         };
     })
-    .factory('StorageService', function ($window) {
+    .factory('StorageService', ['$window', function ($window) {
         return {
 
             get: function (key) {
@@ -94,5 +94,5 @@ angular.module('jhtestApp')
                 $window.localStorage.clear();
             }
         };
-    });
+    }]);
 

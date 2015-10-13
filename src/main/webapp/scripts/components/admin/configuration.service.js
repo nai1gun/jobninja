@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .factory('ConfigurationService', function ($rootScope, $filter, $http) {
+    .factory('ConfigurationService', ['$rootScope', '$filter', '$http', function ($rootScope, $filter, $http) {
         return {
             get: function() {
                 return $http.get('configprops').then(function (response) {
@@ -14,4 +14,4 @@ angular.module('jhtestApp')
                 });
             }
         };
-    });
+    }]);

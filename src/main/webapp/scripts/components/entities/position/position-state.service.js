@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .factory('PositionState', function ($translate) {
+    .factory('PositionState', ['$translate', function ($translate) {
         return {
             getAll: function (callback) {
                 return $translate('jhtestApp.position.defaultStates').then(function(statesStr){
@@ -9,4 +9,4 @@ angular.module('jhtestApp')
                 });
             }
         };
-    });
+    }]);

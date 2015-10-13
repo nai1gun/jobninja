@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .factory('AlertService', function ($timeout, $sce,$translate) {
+    .factory('AlertService', ['$timeout', '$sce', '$translate', function ($timeout, $sce, $translate) {
         var exports = {
             factory: factory,
             add: addAlert,
@@ -96,4 +96,4 @@ angular.module('jhtestApp')
 
         return exports;
 
-    });
+    }]);

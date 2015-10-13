@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .factory('AuditsService', function ($http) {
+    .factory('AuditsService', ['$http', function ($http) {
         return {
             findAll: function () {
                 return $http.get('api/audits/all').then(function (response) {
@@ -22,4 +22,4 @@ angular.module('jhtestApp')
                 });
             }
         };
-    });
+    }]);

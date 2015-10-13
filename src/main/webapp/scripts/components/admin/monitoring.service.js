@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .factory('MonitoringService', function ($rootScope, $http) {
+    .factory('MonitoringService', ['$rootScope', '$http', function ($rootScope, $http) {
         return {
             getMetrics: function () {
                 return $http.get('metrics/metrics').then(function (response) {
@@ -21,4 +21,4 @@ angular.module('jhtestApp')
                 });
             }
         };
-    });
+    }]);
