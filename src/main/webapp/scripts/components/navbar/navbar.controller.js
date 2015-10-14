@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .controller('NavbarController', function ($scope, $location, $state, Auth, Principal) {
+    .controller('NavbarController', ['$scope', '$location', '$state', 'Auth', 'Principal', function ($scope, $location, $state, Auth, Principal) {
         $scope.isAuthenticated = Principal.isAuthenticated;
         $scope.$state = $state;
 
@@ -9,4 +9,4 @@ angular.module('jhtestApp')
             Auth.logout();
             $state.go('home');
         };
-    });
+    }]);

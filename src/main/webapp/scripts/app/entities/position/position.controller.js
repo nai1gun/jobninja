@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .controller('PositionController', function ($scope, Position, ParseLinks) {
+    .controller('PositionController', ['$scope', 'Position', 'ParseLinks', function ($scope, Position, ParseLinks) {
         $scope.positions = [];
         $scope.page = 1;
         $scope.loadAll = function() {
@@ -40,4 +40,4 @@ angular.module('jhtestApp')
         $scope.clear = function () {
             $scope.position = {name: null, link: null, state: null, created: null, edited: null, notes: null, id: null};
         };
-    });
+    }]);

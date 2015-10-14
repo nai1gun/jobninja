@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .controller('ActivationController', function ($scope, $stateParams, Auth) {
+    .controller('ActivationController', ['$scope', '$stateParams', 'Auth', function ($scope, $stateParams, Auth) {
         Auth.activateAccount({key: $stateParams.key}).then(function () {
             $scope.error = null;
             $scope.success = 'OK';
@@ -9,5 +9,5 @@ angular.module('jhtestApp')
             $scope.success = null;
             $scope.error = 'ERROR';
         });
-    });
+    }]);
 

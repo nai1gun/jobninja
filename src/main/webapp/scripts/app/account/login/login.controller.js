@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .controller('LoginController', function ($rootScope, $scope, $state, $timeout, Auth) {
+    .controller('LoginController', ['$rootScope', '$scope', '$state', '$timeout', 'Auth', function ($rootScope, $scope, $state, $timeout, Auth) {
         $scope.user = {};
         $scope.errors = {};
 
@@ -24,4 +24,4 @@ angular.module('jhtestApp')
                 $scope.authenticationError = true;
             });
         };
-    });
+    }]);

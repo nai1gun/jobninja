@@ -1,6 +1,6 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .controller('LogoutController', function (Auth) {
+    .controller('LogoutController', ['Auth', function (Auth) {
         Auth.logout();
-    });
+    }]);

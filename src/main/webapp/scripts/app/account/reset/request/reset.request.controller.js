@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .controller('RequestResetController', function ($rootScope, $scope, $state, $timeout, Auth) {
+    .controller('RequestResetController', ['$rootScope', '$scope', '$state', '$timeout', 'Auth', function ($rootScope, $scope, $state, $timeout, Auth) {
 
         $scope.success = null;
         $scope.error = null;
@@ -26,4 +26,4 @@ angular.module('jhtestApp')
             });
         }
 
-    });
+    }]);

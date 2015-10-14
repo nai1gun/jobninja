@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .config(function ($stateProvider) {
+    .config(['$stateProvider', function ($stateProvider) {
         $stateProvider
             .state('entity', {
                 abstract: true,
                 parent: 'site'
             });
-    });
+    }]);

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .factory('Principal', function Principal($q, Account) {
+    .factory('Principal', ['$q', 'Account', function Principal($q, Account) {
         var _identity,
             _authenticated = false;
 
@@ -70,4 +70,4 @@ angular.module('jhtestApp')
                 return deferred.promise;
             }
         };
-    });
+    }]);

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .config(function ($stateProvider) {
+    .config(['$stateProvider', function ($stateProvider) {
         $stateProvider
             .state('position', {
                 parent: 'entity',
@@ -93,4 +93,4 @@ angular.module('jhtestApp')
                     })
                 }]
             });
-    });
+    }]);

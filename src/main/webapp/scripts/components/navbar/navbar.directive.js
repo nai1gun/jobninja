@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .directive('activeMenu', function($translate, $locale, tmhDynamicLocale) {
+    .directive('activeMenu', ['$translate', '$locale', 'tmhDynamicLocale', function($translate, $locale, tmhDynamicLocale) {
         return {
             restrict: 'A',
             link: function (scope, element, attrs) {
@@ -19,8 +19,8 @@ angular.module('jhtestApp')
                 });
             }
         };
-    })
-    .directive('activeLink', function(location) {
+    }])
+    .directive('activeLink', ['location', function(location) {
         return {
             restrict: 'A',
             link: function (scope, element, attrs) {
@@ -37,4 +37,4 @@ angular.module('jhtestApp')
                 });
             }
         };
-    });
+    }]);

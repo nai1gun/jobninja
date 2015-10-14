@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .factory('AuthServerProvider', function loginService($http, localStorageService, Base64) {
+    .factory('AuthServerProvider', ['$http', 'localStorageService', 'Base64', function loginService($http, localStorageService, Base64) {
         return {
             login: function(credentials) {
                 var data = "username=" + credentials.username + "&password="
@@ -35,4 +35,4 @@ angular.module('jhtestApp')
                 return token && token.expires_at && token.expires_at > new Date().getTime();
             }
         };
-    });
+    }]);

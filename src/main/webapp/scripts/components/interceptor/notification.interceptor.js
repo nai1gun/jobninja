@@ -9,6 +9,6 @@ angular.module('jhtestApp')
                     AlertService.success(alertKey, { param : response.headers('X-jhtestApp-params')});
                 }
                 return response;
-            },
+            }
         };
     }]);

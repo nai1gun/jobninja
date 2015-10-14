@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .config(function ($stateProvider) {
+    .config(['$stateProvider', function ($stateProvider) {
         $stateProvider
             .state('configuration', {
                 parent: 'admin',
@@ -23,4 +23,4 @@ angular.module('jhtestApp')
                     }]
                 }
             });
-    });
+    }]);

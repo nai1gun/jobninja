@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .controller('LanguageController', function ($scope, $translate, Language, tmhDynamicLocale) {
+    .controller('LanguageController', ['$scope', '$translate', 'Language', 'tmhDynamicLocale', function ($scope, $translate, Language, tmhDynamicLocale) {
         $scope.changeLanguage = function (languageKey) {
             $translate.use(languageKey);
             tmhDynamicLocale.set(languageKey);
@@ -10,7 +10,7 @@ angular.module('jhtestApp')
         Language.getAll().then(function (languages) {
             $scope.languages = languages;
         });
-    })
+    }])
     .filter('findLanguageFromKey', function () {
         return function (lang) {
             return {

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .controller('RegisterController', function ($scope, $translate, $timeout, Auth) {
+    .controller('RegisterController', ['$scope', '$translate', '$timeout', 'Auth', function ($scope, $translate, $timeout, Auth) {
         $scope.success = null;
         $scope.error = null;
         $scope.doNotMatch = null;
@@ -33,4 +33,4 @@ angular.module('jhtestApp')
                 });
             }
         };
-    });
+    }]);

@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .config(function ($stateProvider) {
+    .config(['$stateProvider', function($stateProvider) {
         $stateProvider
             .state('login', {
                 parent: 'account',
                 url: '/login',
                 data: {
-                    roles: [], 
+                    roles: [],
                     pageTitle: 'login.title'
                 },
                 views: {
@@ -23,4 +23,4 @@ angular.module('jhtestApp')
                     }]
                 }
             });
-    });
+    }]);

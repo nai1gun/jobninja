@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .controller('SettingsController', function ($scope, Principal, Auth, Language, $translate) {
+    .controller('SettingsController', ['$scope', 'Principal', 'Auth', 'Language', '$translate', function ($scope, Principal, Auth, Language, $translate) {
         $scope.success = null;
         $scope.error = null;
         Principal.identity(true).then(function(account) {
@@ -25,4 +25,4 @@ angular.module('jhtestApp')
                 $scope.error = 'ERROR';
             });
         };
-    });
+    }]);

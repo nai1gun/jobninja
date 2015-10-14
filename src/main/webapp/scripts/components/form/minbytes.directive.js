@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .directive('minbytes', function ($q) {
+    .directive('minbytes', function () {
         function endsWith(suffix, str) {
             return str.indexOf(suffix, str.length - suffix.length) !== -1;
         }

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .controller('PositionDetailController', function ($scope, $rootScope, $stateParams, entity, Position) {
+    .controller('PositionDetailController', ['$scope', '$rootScope', '$stateParams', 'entity', 'Position', function ($scope, $rootScope, $stateParams, entity, Position) {
         $scope.position = entity;
         $scope.load = function (id) {
             Position.get({id: id}, function(result) {
@@ -11,4 +11,4 @@ angular.module('jhtestApp')
         $rootScope.$on('jhtestApp:positionUpdate', function(event, result) {
             $scope.position = result;
         });
-    });
+    }]);

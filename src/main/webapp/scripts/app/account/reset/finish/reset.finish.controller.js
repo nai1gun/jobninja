@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .controller('ResetFinishController', function ($scope, $stateParams, $timeout, Auth) {
+    .controller('ResetFinishController', ['$scope', '$stateParams', '$timeout', 'Auth', function ($scope, $stateParams, $timeout, Auth) {
 
         $scope.keyMissing = $stateParams.key === undefined;
         $scope.doNotMatch = null;
@@ -23,4 +23,4 @@ angular.module('jhtestApp')
             }
 
         };
-    });
+    }]);

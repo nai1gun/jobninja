@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .config(function ($stateProvider) {
+    .config(['$stateProvider', function ($stateProvider) {
         $stateProvider
             .state('home', {
                 parent: 'site',
@@ -22,4 +22,4 @@ angular.module('jhtestApp')
                     }]
                 }
             });
-    });
+    }]);
