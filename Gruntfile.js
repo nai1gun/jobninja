@@ -140,8 +140,8 @@ module.exports = function (grunt) {
                 flow: {
                     html: {
                         steps: {
-                            //js: ['concat', 'uglifyjs'],
-                            //css: ['cssmin', useminAutoprefixer] // Let cssmin concat files so it corrects relative paths to fonts and images
+                            js: ['concat', 'uglifyjs'],
+                            css: ['cssmin', useminAutoprefixer] // Let cssmin concat files so it corrects relative paths to fonts and images
                         },
                             post: {}
                         }
@@ -357,8 +357,8 @@ module.exports = function (grunt) {
         'autoprefixer',
         //'uglify',
         'rev',
-        //'usemin',
-        //'htmlmin'
+        'usemin',
+        'htmlmin'
     ]);
 
 	grunt.registerTask('appendSkipBower', 'Force skip of bower for Gradle', function () {
