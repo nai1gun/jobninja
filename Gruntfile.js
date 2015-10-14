@@ -355,10 +355,10 @@ module.exports = function (grunt) {
         'ngAnnotate',
         'cssmin',
         'autoprefixer',
-        'uglify',
+        //'uglify',
         'rev',
-        'usemin',
-        'htmlmin'
+        //'usemin',
+        //'htmlmin'
     ]);
 
 	grunt.registerTask('appendSkipBower', 'Force skip of bower for Gradle', function () {
