@@ -110,7 +110,7 @@ module.exports = function (grunt) {
             },
             all: [
                 'Gruntfile.js',
-                'src/main/webapp/scripts/app/app.js',
+                'src/main/webapp/scripts/app.js',
                 'src/main/webapp/scripts/app/**/*.js',
                 'src/main/webapp/scripts/components/**/*.js'
             ]
@@ -140,8 +140,8 @@ module.exports = function (grunt) {
                 flow: {
                     html: {
                         steps: {
-                            js: ['concat'/*, 'uglifyjs'*/],
-                            css: ['concat'/*'cssmin', useminAutoprefixer*/] // Let cssmin concat files so it corrects relative paths to fonts and images
+                            js: ['concat', 'uglifyjs'],
+                            css: ['cssmin', useminAutoprefixer] // Let cssmin concat files so it corrects relative paths to fonts and images
                         },
                             post: {}
                         }
@@ -192,7 +192,7 @@ module.exports = function (grunt) {
                 dest: '.tmp/templates/templates.js',
                 options: {
                     module: 'jhtestApp',
-                    usemin: 'scripts/app/app.js',
+                    usemin: 'scripts/app.js',
                     htmlmin: '<%= htmlmin.dist.options %>'
                 }
             }
@@ -355,10 +355,10 @@ module.exports = function (grunt) {
         'ngAnnotate',
         'cssmin',
         'autoprefixer',
-        //'uglify',
+        'uglify',
         'rev',
         'usemin',
-        //'htmlmin'
+        'htmlmin'
     ]);
 
 	grunt.registerTask('appendSkipBower', 'Force skip of bower for Gradle', function () {
