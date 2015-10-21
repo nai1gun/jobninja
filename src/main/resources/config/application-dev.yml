@@ -30,4 +30,12 @@ metrics:
         port: 2003
         prefix: jhtest
 
-
+mail:
+    host: smtp.gmail.com
+    port: 587
+    username: job.ninja.noreply@gmail.com
+    password: jobninja3322
+    protocol: smtp
+    tls: true
+    auth: true
+    from: job.ninja.noreply@gmail.com

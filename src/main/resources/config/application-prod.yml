@@ -31,4 +31,14 @@ http:
     cache:
         timeToLiveInDays: 31
 
+mail:
+    host: smtp.sendgrid.net
+    port: 587
+    username: app41179252@heroku.com
+    password: zzimmxj06652
+    protocol: smtp
+    tls: true
+    auth: true
+    from: app41179252@heroku.com
+
 
