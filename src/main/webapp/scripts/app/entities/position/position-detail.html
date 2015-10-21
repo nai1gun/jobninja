@@ -1,5 +1,5 @@
 
-<div>
+<form name="editForm" role="form" novalidate ng-submit="editDone()">
     <h2><span translate="jhtestApp.position.detail.title">Position</span> {{position.id}}</h2>
     <div class="table-responsive">
         <table class="table table-striped">
@@ -15,7 +15,7 @@
                     <span translate="jhtestApp.position.name">Name</span>
                 </td>
                 <td>
-                    <input type="text" class="input-sm form-control" value="{{position.name}}" readonly>
+                    <input type="text" class="input-sm form-control" ng-model="position.name" ng-readonly="!editing">
                 </td>
             </tr>
             <tr>
@@ -23,7 +23,7 @@
                     <span translate="jhtestApp.position.link">Link</span>
                 </td>
                 <td>
-                    <input type="text" class="input-sm form-control" value="{{position.link}}" readonly>
+                    <input type="text" class="input-sm form-control" ng-model="position.link" ng-readonly="!editing">
                 </td>
             </tr>
             <tr>
@@ -31,7 +31,16 @@
                     <span translate="jhtestApp.position.state">State</span>
                 </td>
                 <td>
-                    <input type="text" class="input-sm form-control" value="{{position.state}}" readonly>
+                    <select id="field_state" name="state" class="form-control" ng-model="position.state"
+                            ng-options="s as s for s in states" ng-disabled="!editing"></select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="jhtestApp.position.notes">Notes</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" ng-model="position.notes" ng-readonly="!editing">
                 </td>
             </tr>
             <tr>
@@ -50,21 +59,22 @@
                     <input type="text" class="input-sm form-control" value="{{position.edited}}" readonly>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <span translate="jhtestApp.position.notes">Notes</span>
-                </td>
-                <td>
-                    <input type="text" class="input-sm form-control" value="{{position.notes}}" readonly>
-                </td>
-            </tr>
             </tbody>
         </table>
     </div>
 
-    <button type="submit"
+    <button type="button"
             ui-sref="position"
             class="btn btn-info">
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
     </button>
-</div>
+    <button type="button" ng-if="!editing" class="btn btn-success" ng-click="editStart()">
+        <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+    </button>
+    <button type="button" ng-if="editing" class="btn btn-default" ng-click="editCancel()">
+        <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+    </button>
+    <button type="submit" ng-if="editing" class="btn btn-primary">
+        <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+    </button>
+</form>

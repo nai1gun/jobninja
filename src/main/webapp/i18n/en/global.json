@@ -82,7 +82,8 @@
             "delete": "Delete",
             "edit": "Edit",
             "save": "Save",
-            "view": "View"
+            "view": "View",
+            "details": "Details"
         },
         "detail": {
             "field": "Field",
