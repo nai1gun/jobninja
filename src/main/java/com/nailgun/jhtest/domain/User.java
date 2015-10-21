@@ -1,13 +1,13 @@
 package com.nailgun.jhtest.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.validator.constraints.Email;
-
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.nailgun.jhtest.domain.util.CustomDateTimeDeserializer;
 import com.nailgun.jhtest.domain.util.CustomDateTimeSerializer;
-
+import org.bson.types.ObjectId;
+import org.hibernate.validator.constraints.Email;
+import org.joda.time.DateTime;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -19,8 +19,6 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.joda.time.DateTime;
-
 /**
  * A user.
  */
@@ -28,7 +26,7 @@ import org.joda.time.DateTime;
 public class User extends AbstractAuditingEntity implements Serializable {
 
     @Id
-    private String id;
+    private ObjectId id;
 
     @NotNull
     @Pattern(regexp = "^[a-z0-9]*$")
@@ -37,7 +35,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     @JsonIgnore
     @NotNull
-    @Size(min = 60, max = 60) 
+    @Size(min = 60, max = 60)
     private String password;
 
     @Size(max = 50)
@@ -75,11 +73,11 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @JsonIgnore
     private Set<Authority> authorities = new HashSet<>();
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
