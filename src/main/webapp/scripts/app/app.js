@@ -44,7 +44,7 @@ angular.module('jhtestApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pascalp
         $rootScope.back = function() {
             // If previous state is 'activate' or do not exist go to '/'
             if ($rootScope.previousStateName === 'activate' || $state.get($rootScope.previousStateName) === null) {
-                $state.go('/');
+                $state.go('position');
             } else {
                 $state.go($rootScope.previousStateName, $rootScope.previousStateParams);
             }

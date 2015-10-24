@@ -7,7 +7,6 @@ import com.nailgun.jhtest.repository.UserRepository;
 import com.nailgun.jhtest.security.SecurityUtils;
 import com.nailgun.jhtest.service.util.RandomUtil;
 import org.joda.time.DateTime;
-import org.joda.time.LocalDate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -39,7 +38,7 @@ public class UserService {
 
     public Optional<User> activateRegistration(String key) {
         log.debug("Activating user for activation key {}", key);
-        userRepository.findOneByActivationKey(key)
+        return userRepository.findOneByActivationKey(key)
             .map(user -> {
                 // activate given user for the registration key.
                 user.setActivated(true);
@@ -48,7 +47,6 @@ public class UserService {
                 log.debug("Activated user: {}", user);
                 return user;
             });
-        return Optional.empty();
     }
 
     public Optional<User> completePasswordReset(String newPassword, String key) {

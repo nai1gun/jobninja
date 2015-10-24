@@ -3,6 +3,7 @@ package com.nailgun.jhtest.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.mongodb.DBObject;
 import com.nailgun.jhtest.domain.util.CustomDateTimeDeserializer;
 import com.nailgun.jhtest.domain.util.CustomDateTimeSerializer;
 import org.bson.types.ObjectId;
@@ -72,6 +73,10 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     @JsonIgnore
     private Set<Authority> authorities = new HashSet<>();
+
+    @Field("token_data")
+    @JsonIgnore
+    private DBObject tokenData;
 
     public ObjectId getId() {
         return id;
@@ -167,6 +172,14 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     public void setAuthorities(Set<Authority> authorities) {
         this.authorities = authorities;
+    }
+
+    public DBObject getTokenData() {
+        return tokenData;
+    }
+
+    public void setTokenData(DBObject tokenData) {
+        this.tokenData = tokenData;
     }
 
     @Override

@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .factory('Auth', ['$rootScope', '$state', '$q', '$translate', 'Principal', 'AuthServerProvider', 'Account', 'Register', 'Activate', 'Password', 'PasswordResetInit', 'PasswordResetFinish',
-        function Auth($rootScope, $state, $q, $translate, Principal, AuthServerProvider, Account, Register, Activate, Password, PasswordResetInit, PasswordResetFinish) {
+    .factory('Auth', ['$rootScope', '$state', '$q', '$translate', 'Principal', 'AuthServerProvider', 'Account', 'Register', 'Activate', 'Password', 'PasswordResetInit', 'PasswordResetFinish', 'localStorageService', 'AlertService',
+        function Auth($rootScope, $state, $q, $translate, Principal, AuthServerProvider, Account, Register, Activate, Password, PasswordResetInit, PasswordResetFinish, localStorageService, AlertService) {
         return {
             login: function (credentials, callback) {
                 var cb = callback || angular.noop;
@@ -84,7 +84,21 @@ angular.module('jhtestApp')
                 var cb = callback || angular.noop;
 
                 return Activate.get(key,
-                    function (response) {
+                    function (response, headers) {
+                        if (headers && headers('token')) {
+                            var token = JSON.parse(headers('token'));
+                            var expiredAt = new Date();
+                            expiredAt.setSeconds(expiredAt.getSeconds() + token.expires_in);
+                            token.expires_at = expiredAt.getTime();
+                            localStorageService.set('token', token);
+                            Principal.identity(true).then(function() {
+                                $state.go('position');
+                                $translate('activate.messages.successAndAuth').then(function(alertMsg){
+                                    AlertService.success(alertMsg);
+                                });
+
+                            });
+                        }
                         return cb(response);
                     },
                     function (err) {
