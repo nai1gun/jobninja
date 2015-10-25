@@ -29,38 +29,31 @@ public class Position implements Serializable {
     @Indexed
     @JsonIgnore
     private User user;
-    
+
     @Field("name")
     private String name;
 
-
-    
     @Field("link")
     private String link;
 
-
-    
     @Field("state")
     private String state;
 
-
-    
     @JsonSerialize(using = CustomDateTimeSerializer.class)
     @JsonDeserialize(using = CustomDateTimeDeserializer.class)
     @Field("created")
     private DateTime created;
 
-
-    
     @JsonSerialize(using = CustomDateTimeSerializer.class)
     @JsonDeserialize(using = CustomDateTimeDeserializer.class)
     @Field("edited")
     private DateTime edited;
 
-
-    
     @Field("notes")
     private String notes;
+
+    @Field("coverLetter")
+    private String coverLetter;
 
     public String getId() {
         return id;
@@ -126,6 +119,14 @@ public class Position implements Serializable {
         this.user = user;
     }
 
+    public String getCoverLetter() {
+        return coverLetter;
+    }
+
+    public void setCoverLetter(String coverLetter) {
+        this.coverLetter = coverLetter;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -157,6 +158,7 @@ public class Position implements Serializable {
                 ", created='" + created + "'" +
                 ", edited='" + edited + "'" +
                 ", notes='" + notes + "'" +
+                ", coverLeter='" + coverLetter + "'" +
                 '}';
     }
 }

@@ -59,6 +59,14 @@
                     <input type="text" class="input-sm form-control" value="{{position.edited}}" readonly>
                 </td>
             </tr>
+            <tr ng-if="hasCoverLetter()">
+                <td>
+                    <span translate="jhtestApp.position.coverLetter">Cover letter</span>
+                </td>
+                <td>
+                    <textarea type="text" class="input-sm form-control" ng-model="position.coverLetter" ng-readonly="!editing"></textarea>
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>
@@ -76,5 +84,8 @@
     </button>
     <button type="submit" ng-if="editing" class="btn btn-primary">
         <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+    </button>
+    <button type="button" ng-if="!hasCoverLetter()" class="btn btn-success" ng-click="addCoverLetter()">
+        <span class="glyphicon glyphicon-envelope"></span>&nbsp;<span translate="jhtestApp.position.action.addCoverLetter">Add cover letter</span>
     </button>
 </form>

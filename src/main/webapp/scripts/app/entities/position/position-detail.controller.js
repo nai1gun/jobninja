@@ -26,6 +26,15 @@ angular.module('jhtestApp')
             $scope.position.edited = DateUtils.convertLocaleDateToServer(new Date());
             Position.update($scope.position, onSaveFinished);
         };
+        $scope.addCoverLetter = function() {
+            if (!$scope.editing) {
+                $scope.editStart();
+            }
+            $scope.position.coverLetter = "";
+        };
+        $scope.hasCoverLetter = function() {
+            return $scope.position.coverLetter != undefined && $scope.position.coverLetter != null;
+        };
 
         PositionState.getAll(function(states) {
             $scope.states = states;
