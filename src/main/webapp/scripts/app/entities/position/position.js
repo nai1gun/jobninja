@@ -53,21 +53,31 @@ angular.module('jhtestApp')
                 data: {
                     roles: ['ROLE_USER'],
                 },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
-                    $modal.open({
-                        templateUrl: 'scripts/app/entities/position/position-dialog.html',
-                        controller: 'PositionDialogController',
-                        size: 'lg',
-                        resolve: {
-                            entity: function () {
-                                return {name: null, link: null, state: null, created: null, edited: null, notes: null, id: null};
+                onEnter: ['$stateParams', '$state', '$modal', 'PositionState', function($stateParams, $state, $modal, PositionState) {
+                    PositionState.getAll(function(states) {
+                        $modal.open({
+                            templateUrl: 'scripts/app/entities/position/position-dialog.html',
+                            controller: 'PositionDialogController',
+                            size: 'lg',
+                            resolve: {
+                                entity: function () {
+                                    return {
+                                        name: null,
+                                        link: null,
+                                        state: states && states.length ? states[0] : null,
+                                        created: null,
+                                        edited: null,
+                                        notes: null,
+                                        id: null
+                                    };
+                                }
                             }
-                        }
-                    }).result.then(function(result) {
-                        $state.go('position', null, { reload: true });
-                    }, function() {
-                        $state.go('position');
-                    })
+                        }).result.then(function (result) {
+                            $state.go('position', null, {reload: true});
+                        }, function () {
+                            $state.go('position');
+                        });
+                    });
                 }]
             })
             .state('position.edit', {
