@@ -6,14 +6,14 @@
                 "createLabel": "Create a new Position",
                 "createOrEditLabel": "Create or edit a Position"
             },
-            "created": "A new Position is created with identifier {{ param }}",
-            "updated": "A Position is updated with identifier {{ param }}",
-            "deleted": "A Position is deleted with identifier {{ param }}",
+            "created": "A new Position is created",
+            "updated": "The Position is updated",
+            "deleted": "The Position is deleted",
             "delete": {
-                "question": "Are you sure you want to delete Position {{ id }}?"
+                "question": "Are you sure you want to delete this position?"
             },
             "detail": {
-                "title": "Position"
+                "title": "Position details"
             },
             "name": "Name",
             "link": "Link",
