@@ -1,28 +1,28 @@
 {
     "reset": {
         "request": {
-            "title": "Reset your password",
+            "title": "Восстановление пароля",
             "form": {
-                "button": "Reset password"
+                "button": "Восстановить пароль"
             },
             "messages": {
-                "info": "Enter the e-mail address you used to register",
-                "success": "Check your e-mails for details on how to reset your password.",
-                "notfound": "<strong>E-Mail address isn't registered!</strong> Please check and try again"
+                "info": "Введить email, на который вы зарегистрировались.",
+                "success": "На ваш email Выслана информация о восстановлении пароля.",
+                "notfound": "<strong>Данный email не зарегистрирован!</strong> Пожалуйста проверьте ввод и попробуйте снова."
 
             }
 
         },
         "finish" : {
-            "title": "Reset password",
+            "title": "Восстановление пароля",
             "form": {
-                "button": "Validate new password"
+                "button": "Проверить пароль"
             },
             "messages": {
-                "info": "Choose a new password",
-                "success": "<strong>Your password has been reset.</strong> Please <a href=\"#/login\">authenticate</a>.",
-                "keymissing": "The reset key is missing.",
-                "error": "Your password couldn't be reset. Remember a password request is only valid for 24 hours."
+                "info": "Выберите новый пароль",
+                "success": "<strong>Ваш пароль был изменён.</strong> Пожалуйста <a href=\"#/login\">авторизуйтесь</a>.",
+                "keymissing": "Отсутствует ключ восстановления.",
+                "error": "Ваш пароль не может быть восстановлен. Запрос на восстановление пароля хранится только 24 часа."
             }
         }
     }
