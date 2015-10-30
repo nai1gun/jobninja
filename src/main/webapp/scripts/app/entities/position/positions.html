@@ -42,6 +42,7 @@
             <thead>
                 <tr>
                     <th translate="jhtestApp.position.name">Name</th>
+                    <th translate="jhtestApp.position.company">Company</th>
                     <th translate="jhtestApp.position.link">Link</th>
                     <th translate="jhtestApp.position.state">State</th>
                     <th translate="jhtestApp.position.edited">Edited</th>
@@ -51,6 +52,7 @@
             <tbody>
                 <tr ng-repeat="position in positions">
                     <td>{{position.name}}</td>
+                    <td>{{position.company}}</td>
                     <td><a ng-href="{{position.link}}" target="_blank">{{position.link}}</a></td>
                     <td>{{position.state}}</td>
                     <td>{{position.edited}}</td>
@@ -60,11 +62,6 @@
                                 class="btn btn-info btn-sm">
                             <span class="glyphicon glyphicon-list"></span>&nbsp;<span translate="entity.action.details"> Details</span>
                         </button>
-                        <!--<button type="submit"
-                                ui-sref="position.edit({id:position.id})"
-                                class="btn btn-primary btn-sm">
-                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
-                        </button>-->
                         <button type="submit"
                                 ng-click="delete(position.id)"
                                 class="btn btn-danger btn-sm">

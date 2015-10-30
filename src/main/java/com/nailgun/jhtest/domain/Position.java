@@ -33,6 +33,9 @@ public class Position implements Serializable {
     @Field("name")
     private String name;
 
+    @Field("company")
+    private String company;
+
     @Field("link")
     private String link;
 
@@ -69,6 +72,14 @@ public class Position implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
     }
 
     public String getLink() {
@@ -153,6 +164,7 @@ public class Position implements Serializable {
         return "Position{" +
                 "id=" + id +
                 ", name='" + name + "'" +
+                ", company='" + company + "'" +
                 ", link='" + link + "'" +
                 ", state='" + state + "'" +
                 ", created='" + created + "'" +
