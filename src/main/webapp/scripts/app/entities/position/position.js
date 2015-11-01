@@ -47,6 +47,29 @@ angular.module('jhtestApp')
                     }]
                 }
             })
+            .state('position.detail.cv', {
+                parent: 'position.detail',
+                url: '/cv',
+                data: {
+                    roles: ['ROLE_USER']
+                },
+                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                    $modal.open({
+                        templateUrl: 'scripts/app/entities/position/position-cv-dialog.html',
+                        controller: 'PositionCvDialogController',
+                        size: 'lg'/*,
+                        resolve: {
+                            entity: ['Position', function(Position) {
+                                return Position.get({id : $stateParams.id});
+                            }]
+                        }*/
+                    }).result.then(function(result) {
+                        $state.go('^', null, { reload: true });
+                    }, function() {
+                        $state.go('^');
+                    })
+                }]
+            })
             .state('position.new', {
                 parent: 'position',
                 url: '/new',

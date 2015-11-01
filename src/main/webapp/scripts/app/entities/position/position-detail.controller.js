@@ -1,17 +1,19 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .controller('PositionDetailController', ['$scope', '$rootScope', '$stateParams', 'entity', 'Position', 'PositionState', 'DateUtils',
-        function ($scope, $rootScope, $stateParams, entity, Position, PositionState, DateUtils) {
+    .controller('PositionDetailController', ['$scope', '$rootScope', '$stateParams', '$state', '$timeout', 'entity', 'Position', 'PositionState', 'DateUtils',
+        function ($scope, $rootScope, $stateParams, $state, $timeout, entity, Position, PositionState, DateUtils) {
         $scope.position = entity;
         $scope.editing = false;
         $scope.load = function (id) {
             Position.get({id: id}, function(result) {
                 $scope.position = result;
+                updatePosition();
             });
         };
         $rootScope.$on('jhtestApp:positionUpdate', function(event, result) {
             $scope.position = result;
+            updatePosition();
         });
         $scope.editStart = function() {
             $scope.$position = angular.copy($scope.position);
@@ -19,6 +21,7 @@ angular.module('jhtestApp')
         };
         $scope.editCancel = function() {
             $scope.position = angular.copy($scope.$position);
+            updatePosition();
             $scope.editing = false;
         };
         $scope.editDone = function() {
@@ -36,12 +39,29 @@ angular.module('jhtestApp')
             return $scope.position.coverLetter != undefined && $scope.position.coverLetter != null;
         };
 
-        PositionState.getAll(function(states) {
-            $scope.states = states;
-        });
+        $scope.editCV = function() {
+            if (!$scope.editing) {
+                $scope.editStart();
+            }
+            $state.go('position.detail.cv');
+        };
+
+        $scope.hasCV = function() {
+            return $scope.position.cv != undefined && $scope.position.cv != null;
+        };
 
         var onSaveFinished = function (result) {
             $scope.$emit('jhtestApp:positionUpdate', result);
         };
+
+        var updatePosition = function() {
+            $state.$current.data.position = $scope.position;
+        };
+
+        PositionState.getAll(function(states) {
+            $scope.states = states;
+        });
+
+        updatePosition();
 
     }]);
