@@ -58,6 +58,8 @@ public class Position implements Serializable {
     @Field("coverLetter")
     private String coverLetter;
 
+    private Cv cv;
+
     public String getId() {
         return id;
     }
@@ -136,6 +138,14 @@ public class Position implements Serializable {
 
     public void setCoverLetter(String coverLetter) {
         this.coverLetter = coverLetter;
+    }
+
+    public Cv getCv() {
+        return cv;
+    }
+
+    public void setCv(Cv cv) {
+        this.cv = cv;
     }
 
     @Override

@@ -18,6 +18,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -77,6 +78,8 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Field("token_data")
     @JsonIgnore
     private DBObject tokenData;
+
+    private List<Cv> cvs;
 
     public ObjectId getId() {
         return id;
@@ -180,6 +183,14 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     public void setTokenData(DBObject tokenData) {
         this.tokenData = tokenData;
+    }
+
+    public List<Cv> getCvs() {
+        return cvs;
+    }
+
+    public void setCvs(List<Cv> cvs) {
+        this.cvs = cvs;
     }
 
     @Override

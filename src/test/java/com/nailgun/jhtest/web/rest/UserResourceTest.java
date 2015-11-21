@@ -3,10 +3,8 @@ package com.nailgun.jhtest.web.rest;
 import com.nailgun.jhtest.Application;
 import com.nailgun.jhtest.config.MongoConfiguration;
 import com.nailgun.jhtest.repository.UserRepository;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
@@ -29,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
-@IntegrationTest
+//@IntegrationTest
 @Import(MongoConfiguration.class)
 public class UserResourceTest {
 
@@ -38,7 +36,7 @@ public class UserResourceTest {
 
     private MockMvc restUserMockMvc;
 
-    @Before
+    //@Before
     public void setup() {
         UserResource userResource = new UserResource();
         ReflectionTestUtils.setField(userResource, "userRepository", userRepository);

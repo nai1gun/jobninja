@@ -80,7 +80,7 @@
                     <span>CV</span>
                 </td>
                 <td>
-                    <span class="non-editable">{{position.cv}}</span>
+                    <span class="non-editable"><a ng-href="{{s3url(position.cv)}}" target="_blank">{{position.cv.filePath}}</a></span>
                     <button type="button" class="btn btn-success" ng-click="editCV()" ng-class="{invisible: !editing}" >
                         <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span>Change</span>
                     </button>
