@@ -13,12 +13,14 @@ import org.jets3t.service.model.S3Object;
 import org.jets3t.service.security.AWSCredentials;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
@@ -32,20 +34,31 @@ import java.util.UUID;
 @RequestMapping("/api")
 public class UserResource {
 
-    private static final String AWS_ACCESS_KEY = "AKIAIFMJ6IVRZZPHLKKA";
-    private static final String AWS_SECRET_KEY = "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";
-
-    private static final String AWS_BUCKET_NAME = "job-ninja-assets";
     private static final String AWS_BUCKET_CV_DIR = "cv";
-    private static final AWSCredentials AWS_CREDENTIALS = new AWSCredentials(AWS_ACCESS_KEY, AWS_SECRET_KEY);
 
     private final Logger log = LoggerFactory.getLogger(UserResource.class);
+
+    @Value("${aws.accessKeyId:#{null}}")
+    private String awsAccessKey;
+
+    @Value("${aws.secretKey:#{null}}")
+    private String awsSecretKey;
+
+    @Value("${aws.s3.bucketName:job-ninja-assets}")
+    private String awsS3BucketName;
+
+    private AWSCredentials awsCredentials;
 
     @Inject
     private UserRepository userRepository;
 
     @Inject
     private UserService userService;
+
+    @PostConstruct
+    private void initAwsCredentials() {
+        awsCredentials = new AWSCredentials(awsAccessKey, awsSecretKey);
+    }
 
     /**
      * GET  /users -> get all users.
@@ -87,14 +100,14 @@ public class UserResource {
                 byte[] bytes = file.getBytes();
                 String dir = AWS_BUCKET_CV_DIR + "/" + UUID.randomUUID().toString() + "/";
                 String filePath = dir + name;
-                S3Service s3Service = new RestS3Service(AWS_CREDENTIALS);
+                S3Service s3Service = new RestS3Service(awsCredentials);
                 S3Object s3Object = new S3Object(filePath);
                 s3Object.addMetadata("Cache-Control", "max-age=1314000");
                 s3Object.setContentType(file.getContentType());
                 s3Object.setContentLength(bytes.length);
                 s3Object.setDataInputStream(new ByteArrayInputStream(bytes));
                 s3Object.setAcl(AccessControlList.REST_CANNED_PUBLIC_READ);
-                S3Bucket dataBucket = s3Service.getBucket(AWS_BUCKET_NAME);
+                S3Bucket dataBucket = s3Service.getBucket(awsS3BucketName);
                 s3Service.putObject(dataBucket, s3Object);
 
                 Cv cv = new Cv(filePath);
