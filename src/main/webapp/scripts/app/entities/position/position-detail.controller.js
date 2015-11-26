@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .controller('PositionDetailController', ['$scope', '$rootScope', '$stateParams', '$state', '$timeout', 'entity', 'Position', 'PositionState', 'DateUtils', 'S3_PREFIX',
-        function ($scope, $rootScope, $stateParams, $state, $timeout, entity, Position, PositionState, DateUtils, S3_PREFIX) {
+    .controller('PositionDetailController', ['$scope', '$rootScope', '$stateParams', '$state', '$timeout', 'entity', 'Position', 'PositionState', 'DateUtils', 'PositionUtils',
+        function ($scope, $rootScope, $stateParams, $state, $timeout, entity, Position, PositionState, DateUtils, PositionUtils) {
         $scope.position = entity;
         $scope.editing = false;
         $scope.load = function (id) {
@@ -50,9 +50,9 @@ angular.module('jhtestApp')
             return $scope.position.cv != undefined && $scope.position.cv != null;
         };
 
-        $scope.s3url = function(cv) {
-            return S3_PREFIX + cv.filePath;
-        };
+        $scope.s3url = PositionUtils.s3url;
+
+        $scope.fileName = PositionUtils.fileName;
 
         var onSaveFinished = function (result) {
             $scope.$emit('jhtestApp:positionUpdate', result);

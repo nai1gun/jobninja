@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('jhtestApp').controller('PositionCvDialogController',
-    ['$scope', '$rootScope', '$modalInstance', '$state', 'Position', 'UserCv', 'Upload', 'S3_PREFIX',
-        function($scope, $rootScope, $modalInstance, $state, Position, UserCv, Upload, S3_PREFIX) {
+    ['$scope', '$rootScope', '$modalInstance', '$state', 'Position', 'UserCv', 'Upload', 'PositionUtils',
+        function($scope, $rootScope, $modalInstance, $state, Position, UserCv, Upload, PositionUtils) {
 
         $scope.position = $state.$current.parent.data.position;
         $scope.cvs = [];
@@ -33,16 +33,16 @@ angular.module('jhtestApp').controller('PositionCvDialogController',
         });
 
         $scope.isCvChosen = function(cv) {
-            return $scope.position.cv && $scope.position.cv.filePath == cv.filePath;
+            return $scope.position != undefined && $scope.position.cv != undefined && $scope.position.cv.filePath == cv.filePath;
         };
 
         $scope.chooseCv = function(cv) {
             $scope.position.cv = cv;
         };
 
-        $scope.s3url = function(cv) {
-            return S3_PREFIX + cv.filePath;
-        };
+        $scope.s3url = PositionUtils.s3url;
+
+        $scope.fileName = PositionUtils.fileName;
 
         var loadCvs = function() {
             UserCv.query(function(result){

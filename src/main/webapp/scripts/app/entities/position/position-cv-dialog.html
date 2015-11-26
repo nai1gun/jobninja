@@ -8,16 +8,20 @@
     </div>
     <div class="modal-body">
         <div class="form-group">
-
-            <span ng-repeat="cv in cvs">
-                <span
-                   ng-class="{'cv-chosen': isCvChosen(cv)}"
-                   ng-click="chooseCv(cv)">{{cv.filePath}}</span>
-
-                <a ng-href="{{s3url(cv)}}"
-                   target="_blank">download</a>
-                <br>
-            </span>
+            <table class="table table-condensed table-cv">
+                <tbody>
+                    <tr ng-repeat="cv in cvs"
+                        ng-class="{'success': isCvChosen(cv)}">
+                        <td ng-click="chooseCv(cv)" class="td-file-name">
+                            {{fileName(cv.filePath)}}
+                        </td>
+                        <td>
+                            <a ng-href="{{s3url(cv)}}"
+                               target="_blank">download</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
         <div class="form-group">

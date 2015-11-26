@@ -185,6 +185,10 @@ ul#strengthBar {
     line-height: 1.5;
 }
 
-.cv-chosen {
-    border: 1px solid blue;
+.table-cv .td-file-name {
+    cursor: pointer;
+}
+
+.table-cv .success .td-file-name {
+    cursor: default;
 }
