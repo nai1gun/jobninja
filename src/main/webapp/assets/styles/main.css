@@ -188,7 +188,3 @@ ul#strengthBar {
 .table-cv .td-file-name {
     cursor: pointer;
 }
-
-.table-cv .success .td-file-name {
-    cursor: default;
-}

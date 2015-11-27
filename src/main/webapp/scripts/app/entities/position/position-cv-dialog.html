@@ -19,6 +19,11 @@
                             <a ng-href="{{s3url(cv)}}"
                                target="_blank">download</a>
                         </td>
+                        <td>
+                            <button type="button" class="btn btn-danger" ng-click="deleteCv(cv)">
+                                <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>

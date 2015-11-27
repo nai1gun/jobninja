@@ -37,7 +37,21 @@ angular.module('jhtestApp').controller('PositionCvDialogController',
         };
 
         $scope.chooseCv = function(cv) {
-            $scope.position.cv = cv;
+            if ($scope.position.cv == null || $scope.position.cv.filePath != cv.filePath) {
+                $scope.position.cv = cv;
+            } else {
+                $scope.position.cv = null;
+            }
+        };
+
+        $scope.deleteCv = function(cv) {
+            if (cv.filePath == $scope.position.cv.filePath) {
+                $scope.position.cv = null;
+            }
+            UserCv.delete(cv, function() {
+                var index = $scope.cvs.indexOf(cv);
+                $scope.cvs.splice(index, 1);
+            });
         };
 
         $scope.s3url = PositionUtils.s3url;

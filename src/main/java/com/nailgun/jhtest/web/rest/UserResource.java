@@ -145,7 +145,7 @@ public class UserResource {
      * DELETE  /users/current/cv -> delete the Cv from current user's collection.
      */
     @RequestMapping(value = "/users/current/cv",
-        method = RequestMethod.DELETE,
+        method = RequestMethod.PUT, //DELETE method doesn't allow request body in Angular
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> delete(@RequestBody Cv cv) {
