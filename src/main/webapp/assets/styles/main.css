@@ -188,3 +188,20 @@ ul#strengthBar {
 .table-cv .td-file-name {
     cursor: pointer;
 }
+
+.col-cv-upload {
+    width: 1%;
+}
+
+.btn-cv-upload {
+    white-space: nowrap;
+    margin-right: 20px;
+}
+
+.progress-cv-upload {
+    width: 100%; margin-bottom: 0;
+}
+
+.progress-bar-cv-upload {
+    width: 100%;
+}

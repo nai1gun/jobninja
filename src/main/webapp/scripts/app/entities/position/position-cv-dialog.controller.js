@@ -7,6 +7,7 @@ angular.module('jhtestApp').controller('PositionCvDialogController',
         $scope.position = $state.$current.parent.data.position;
         $scope.cvs = [];
         $scope.cvFile = null;
+        $scope.uploading = false;
 
         $scope.ok = function() {
             $modalInstance.dismiss('ok');
@@ -18,17 +19,20 @@ angular.module('jhtestApp').controller('PositionCvDialogController',
 
         $scope.$watch('cvFile', function(newValue, oldValue) {
             if (newValue != null && newValue.length) {
+                $scope.uploading = true;
                 newValue.upload = Upload.upload({
                     url: '/api/users/current/cv',
                     file: newValue
                 });
 
                 newValue.upload.then(function (response) {
+                    $scope.uploading = false;
                     var cv = response.data;
                     $scope.cvs.push(cv);
                     $scope.position.cv = cv;
                     $scope.ok();
                 }, function (response) {
+                    $scope.uploading = false;
                     if (response.status > 0)
                         $scope.errorMsg = response.status + ': ' + response.data;
                 });
