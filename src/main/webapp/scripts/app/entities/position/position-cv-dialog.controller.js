@@ -24,7 +24,10 @@ angular.module('jhtestApp').controller('PositionCvDialogController',
                 });
 
                 newValue.upload.then(function (response) {
-                    $scope.cvs.push(response.data);
+                    var cv = response.data;
+                    $scope.cvs.push(cv);
+                    $scope.position.cv = cv;
+                    $scope.ok();
                 }, function (response) {
                     if (response.status > 0)
                         $scope.errorMsg = response.status + ': ' + response.data;
