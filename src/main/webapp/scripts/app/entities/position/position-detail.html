@@ -77,12 +77,15 @@
             </tr>
             <tr ng-if="hasCV()">
                 <td>
-                    <span>CV</span>
+                    <span translate="jhtestApp.position.cv">CV</span>
                 </td>
                 <td>
                     <span class="non-editable"><a ng-href="{{s3url(position.cv)}}" target="_blank">{{fileName(position.cv.filePath)}}</a></span>
-                    <button type="button" class="btn btn-success" ng-click="editCV()" ng-class="{invisible: !editing}" >
-                        <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span>Change</span>
+                    <button type="button" class="btn btn-sm btn-success" ng-click="editCV()" ng-class="{invisible: !editing}">
+                        <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.change">Change</span>
+                    </button>
+                    <button type="button" class="btn btn-sm btn-danger" ng-click="removeCv(cv)" ng-class="{invisible: !editing}">
+                        <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.remove">Remove</span>
                     </button>
                 </td>
             </tr>
@@ -108,6 +111,6 @@
         <span class="glyphicon glyphicon-envelope"></span>&nbsp;<span translate="jhtestApp.position.action.addCoverLetter">Add cover letter</span>
     </button>
     <button type="button" ng-if="!hasCV()" class="btn btn-success" ng-click="editCV()">
-        <span class="glyphicon glyphicon-paperclip"></span>&nbsp;<span>Add CV</span>
+        <span class="glyphicon glyphicon-paperclip"></span>&nbsp;<span translate="jhtestApp.position.action.addCv">Add CV</span>
     </button>
 </form>

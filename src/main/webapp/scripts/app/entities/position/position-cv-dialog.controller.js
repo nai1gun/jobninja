@@ -9,11 +9,14 @@ angular.module('jhtestApp').controller('PositionCvDialogController',
         $scope.cvFile = null;
         $scope.uploading = false;
 
+        var $cv = $scope.position? $scope.position.cv: null;
+
         $scope.ok = function() {
             $modalInstance.dismiss('ok');
         };
 
         $scope.cancel = function() {
+            $scope.position.cv = $cv;
             $modalInstance.dismiss('cancel');
         };
 

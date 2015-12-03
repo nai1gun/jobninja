@@ -83,7 +83,11 @@
             "edit": "Edit",
             "save": "Save",
             "view": "View",
-            "details": "Details"
+            "details": "Details",
+            "change": "Change",
+            "uploadnew": "Upload new file",
+            "download": "Download",
+            "remove": "Remove"
         },
         "detail": {
             "field": "Field",

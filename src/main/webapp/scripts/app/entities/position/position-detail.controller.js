@@ -46,6 +46,10 @@ angular.module('jhtestApp')
             $state.go('position.detail.cv');
         };
 
+        $scope.removeCv = function() {
+            $scope.position.cv = null;
+        };
+
         $scope.hasCV = function() {
             return $scope.position.cv != undefined && $scope.position.cv != null;
         };
