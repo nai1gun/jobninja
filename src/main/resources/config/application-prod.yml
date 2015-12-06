@@ -41,4 +41,4 @@ mail:
     auth: true
     from: postmaster@app60b1eb3b6b6f4e1cb5f541422010abda.mailgun.org
 
-
+aws.s3.bucketName: job-ninja-assets
