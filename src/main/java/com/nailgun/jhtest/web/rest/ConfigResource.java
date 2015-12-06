@@ -16,19 +16,19 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/api")
-public class SettingsResource {
+public class ConfigResource {
 
     @Value("${aws.s3.bucketName}")
     private String awsS3BucketName;
 
     /**
-     * GET  /settings -> get application settings.
+     * GET  /config.json -> get application config.
      */
-    @RequestMapping(value = "/settings",
+    @RequestMapping(value = "/config.json",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public Map<String, Object> getSettings() {
+    public Map<String, Object> getConfig() {
         Map<String, Object> ret = new HashMap<>();
         ret.put("awsS3BucketName", awsS3BucketName);
         return ret;

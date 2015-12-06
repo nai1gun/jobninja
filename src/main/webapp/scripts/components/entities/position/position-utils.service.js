@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .factory('PositionUtils', ['S3_PREFIX', function(S3_PREFIX) {
+    .factory('PositionUtils', ['Config', function(Config) {
         return {
             s3url: function(cv) {
-                return S3_PREFIX + cv.filePath;
+                return Config.s3Prefix() + cv.filePath;
             },
             fileName: function(path) {
                 if (!path) {
