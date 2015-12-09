@@ -12,8 +12,11 @@
                 <tbody>
                     <tr ng-repeat="cv in cvs"
                         ng-class="{'success': isCvChosen(cv)}">
-                        <td ng-click="chooseCv(cv)" class="td-file-name">
+                        <td ng-click="chooseCv(cv)" class="td-clickable">
                             {{fileName(cv.filePath)}}
+                        </td>
+                        <td ng-click="chooseCv(cv)" class="td-clickable">
+                            {{cv.created}}
                         </td>
                         <td class="td-actions">
                             <a class="btn btn-sm btn-link" ng-href="{{s3url(cv)}}"

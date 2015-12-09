@@ -185,12 +185,14 @@ ul#strengthBar {
     line-height: 1.5;
 }
 
-.table-cv .td-file-name {
+.table-cv .td-clickable {
     cursor: pointer;
 }
 
 .td-actions {
     text-align: right;
+    width: 1%;
+    white-space: nowrap;
 }
 
 .col-cv-upload {
