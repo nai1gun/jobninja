@@ -39,3 +39,5 @@ mail:
     tls: true
     auth: true
     from: job.ninja.noreply@gmail.com
+
+aws.s3.bucketName: job-ninja-assets-dev

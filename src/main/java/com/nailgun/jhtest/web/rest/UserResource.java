@@ -44,7 +44,7 @@ public class UserResource {
     @Value("${aws.secretKey:#{null}}")
     private String awsSecretKey;
 
-    @Value("${aws.s3.bucketName:job-ninja-assets}")
+    @Value("${aws.s3.bucketName}")
     private String awsS3BucketName;
 
     private AWSCredentials awsCredentials;

@@ -7,6 +7,4 @@ angular.module('jhtestApp')
                 'delete': { method: 'PUT' },//DELETE method doesn't allow request body
                 'save': { method: 'POST' }
             });
-        }])
-    .constant('S3_PREFIX', 'https://job-ninja-assets.s3.amazonaws.com/')
-;
+        }]);
