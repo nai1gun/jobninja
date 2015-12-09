@@ -11,9 +11,11 @@ import org.jets3t.service.impl.rest.httpclient.RestS3Service;
 import org.jets3t.service.model.S3Bucket;
 import org.jets3t.service.model.S3Object;
 import org.jets3t.service.security.AWSCredentials;
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -93,7 +95,8 @@ public class UserResource {
         method = RequestMethod.POST,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Cv> createCv(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<Cv> createCv(@RequestParam("file") MultipartFile file,
+                                       @RequestHeader @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) DateTime created) {
         String name = file.getOriginalFilename();
         if (!file.isEmpty()) {
             try {
@@ -110,7 +113,9 @@ public class UserResource {
                 S3Bucket dataBucket = s3Service.getBucket(awsS3BucketName);
                 s3Service.putObject(dataBucket, s3Object);
 
-                Cv cv = new Cv(filePath);
+                Cv cv = new Cv();
+                cv.setFilePath(filePath);
+                cv.setCreated(created);
                 userRepository.findOneByLogin(SecurityUtils.getCurrentLogin()).ifPresent(user -> {
                     if (user.getCvs() == null) {
                         user.setCvs(new ArrayList<>());

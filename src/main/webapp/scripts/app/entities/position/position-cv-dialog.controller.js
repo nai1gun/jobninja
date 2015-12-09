@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('jhtestApp').controller('PositionCvDialogController',
-    ['$scope', '$rootScope', '$modalInstance', '$state', 'Position', 'UserCv', 'Upload', 'PositionUtils',
-        function($scope, $rootScope, $modalInstance, $state, Position, UserCv, Upload, PositionUtils) {
+    ['$scope', '$rootScope', '$modalInstance', '$state', 'Position', 'UserCv', 'Upload', 'PositionUtils', 'DateUtils',
+        function($scope, $rootScope, $modalInstance, $state, Position, UserCv, Upload, PositionUtils, DateUtils) {
 
         $scope.position = $state.$current.parent.data.position;
         $scope.cvs = [];
@@ -25,7 +25,10 @@ angular.module('jhtestApp').controller('PositionCvDialogController',
                 $scope.uploading = true;
                 newValue.upload = Upload.upload({
                     url: '/api/users/current/cv',
-                    file: newValue
+                    file: newValue,
+                    headers: {
+                        "created": DateUtils.convertLocaleDateToServer(new Date()).toISOString()
+                    }
                 });
 
                 newValue.upload.then(function (response) {
