@@ -189,6 +189,10 @@ ul#strengthBar {
     cursor: pointer;
 }
 
+.td-actions {
+    text-align: right;
+}
+
 .col-cv-upload {
     width: 1%;
 }
