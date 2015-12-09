@@ -10,6 +10,9 @@ angular.module('jhtestApp')
                     data = angular.fromJson(data);
                     data.created = DateUtils.convertDateTimeFromServer(data.created);
                     data.edited = DateUtils.convertDateTimeFromServer(data.edited);
+                    if (data.cv) {
+                        data.cv.created = DateUtils.convertDateTimeFromServer(data.cv.created);
+                    }
                     return data;
                 }
             },
