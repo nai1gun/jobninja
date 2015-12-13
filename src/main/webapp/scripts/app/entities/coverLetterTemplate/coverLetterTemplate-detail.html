@@ -1,0 +1,38 @@
+
+<div>
+    <h2><span translate="jhtestApp.coverLetterTemplate.detail.title">CoverLetterTemplate</span> {{coverLetterTemplate.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="jhtestApp.coverLetterTemplate.name">Name</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{coverLetterTemplate.name}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="jhtestApp.coverLetterTemplate.text">Text</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{coverLetterTemplate.text}}" readonly>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="coverLetterTemplate"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

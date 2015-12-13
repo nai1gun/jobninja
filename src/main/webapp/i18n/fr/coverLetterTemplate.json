@@ -1,0 +1,20 @@
+{
+    "jhtestApp": {
+        "coverLetterTemplate" : {
+            "home": {
+                "title": "CoverLetterTemplates",
+                "createLabel": "Créer un nouveau CoverLetterTemplate",
+                "createOrEditLabel": "Créer ou éditer un CoverLetterTemplate"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le CoverLetterTemplate {{ id }} ?"
+            },
+            "detail": {
+                "title": "CoverLetterTemplate"
+            },
+            "name": "Name",
+            "text": "Text"
+        }
+    }
+}
+

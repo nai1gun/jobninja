@@ -1,0 +1,22 @@
+{
+    "jhtestApp": {
+        "coverLetterTemplate" : {
+            "home": {
+                "title": "CoverLetterTemplates",
+                "createLabel": "Create a new CoverLetterTemplate",
+                "createOrEditLabel": "Create or edit a CoverLetterTemplate"
+            },
+            "created": "A new CoverLetterTemplate is created with identifier {{ param }}",
+            "updated": "A CoverLetterTemplate is updated with identifier {{ param }}",
+            "deleted": "A CoverLetterTemplate is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete CoverLetterTemplate {{ id }}?"
+            },
+            "detail": {
+                "title": "CoverLetterTemplate"
+            },
+            "name": "Name",
+            "text": "Text"
+        }
+    }
+}
