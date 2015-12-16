@@ -4,7 +4,12 @@ angular.module('jhtestApp').controller('PositionCvDialogController',
     ['$scope', '$rootScope', '$modalInstance', '$state', 'Position', 'UserCv', 'Upload', 'PositionUtils', 'DateUtils',
         function($scope, $rootScope, $modalInstance, $state, Position, UserCv, Upload, PositionUtils, DateUtils) {
 
-        $scope.position = $state.$current.parent.data.position;
+        /*
+          Not sure why but this depends on the the url page we opened page
+            ( .../ or .../edit or .../edit/cv )
+        */
+        $scope.position = $state.$current.parent.parent.data.position || $state.$current.parent.data.position ||
+            $state.$current.data.position;
         $scope.cvs = [];
         $scope.cvFile = null;
         $scope.uploading = false;

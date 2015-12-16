@@ -57,7 +57,7 @@ angular.module('jhtestApp')
                 }
             })
             .state('position.detail.cv', {
-                parent: 'position.detail',
+                parent: 'position.edit',
                 url: '/cv',
                 data: {
                     roles: ['ROLE_USER'],

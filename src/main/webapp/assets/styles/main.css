@@ -189,6 +189,10 @@ ul#strengthBar {
     cursor: pointer;
 }
 
+.table-cv tr:first-child td {
+    border-top: none;
+}
+
 .td-actions {
     text-align: right;
     width: 1%;
