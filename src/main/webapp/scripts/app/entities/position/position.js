@@ -29,7 +29,8 @@ angular.module('jhtestApp')
                 url: '/position/{id}',
                 data: {
                     roles: ['ROLE_USER'],
-                    pageTitle: 'jhtestApp.position.detail.title'
+                    pageTitle: 'jhtestApp.position.detail.title',
+                    editing: false
                 },
                 views: {
                     'content@': {
@@ -47,11 +48,20 @@ angular.module('jhtestApp')
                     }]
                 }
             })
+            .state('position.edit', {
+                parent: 'position.detail',
+                url: '/edit',
+                data: {
+                    roles: ['ROLE_USER'],
+                    editing: true
+                }
+            })
             .state('position.detail.cv', {
                 parent: 'position.detail',
                 url: '/cv',
                 data: {
-                    roles: ['ROLE_USER']
+                    roles: ['ROLE_USER'],
+                    editing: true
                 },
                 onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
                     $modal.open({
@@ -101,29 +111,6 @@ angular.module('jhtestApp')
                             $state.go('position');
                         });
                     });
-                }]
-            })
-            .state('position.edit', {
-                parent: 'position',
-                url: '/{id}/edit',
-                data: {
-                    roles: ['ROLE_USER'],
-                },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
-                    $modal.open({
-                        templateUrl: 'scripts/app/entities/position/position-dialog.html',
-                        controller: 'PositionDialogController',
-                        size: 'lg',
-                        resolve: {
-                            entity: ['Position', function(Position) {
-                                return Position.get({id : $stateParams.id});
-                            }]
-                        }
-                    }).result.then(function(result) {
-                        $state.go('position', null, { reload: true });
-                    }, function() {
-                        $state.go('^');
-                    })
                 }]
             });
     }]);

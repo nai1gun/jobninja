@@ -4,7 +4,8 @@ angular.module('jhtestApp')
     .controller('PositionDetailController', ['$scope', '$rootScope', '$stateParams', '$state', '$timeout', 'entity', 'Position', 'PositionState', 'DateUtils', 'PositionUtils',
         function ($scope, $rootScope, $stateParams, $state, $timeout, entity, Position, PositionState, DateUtils, PositionUtils) {
         $scope.position = entity;
-        $scope.editing = false;
+        $scope.$position = angular.copy($scope.position);
+        $scope.editing = $state.$current.data.editing;
         $scope.load = function (id) {
             Position.get({id: id}, function(result) {
                 $scope.position = result;
@@ -18,16 +19,19 @@ angular.module('jhtestApp')
         $scope.editStart = function() {
             $scope.$position = angular.copy($scope.position);
             $scope.editing = true;
+            $state.go('position.edit');
         };
         $scope.editCancel = function() {
             $scope.position = angular.copy($scope.$position);
             updatePosition();
             $scope.editing = false;
+            $state.go('position.detail');
         };
         $scope.editDone = function() {
             $scope.editing = false;
             $scope.position.edited = DateUtils.convertLocaleDateToServer(new Date());
             Position.update($scope.position, onSaveFinished);
+            $state.go('position.detail');
         };
         $scope.addCoverLetter = function() {
             if (!$scope.editing) {
