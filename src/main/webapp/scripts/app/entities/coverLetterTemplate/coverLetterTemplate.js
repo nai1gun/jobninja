@@ -24,12 +24,37 @@ angular.module('jhtestApp')
                     }]
                 }
             })
+            .state('coverLetterTemplate.new', {
+                parent: 'entity',
+                url: '/coverLetterTemplate/new',
+                data: {
+                    roles: ['ROLE_USER'],
+                    pageTitle: 'jhtestApp.coverLetterTemplate.detail.title',
+                    editing: true
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'scripts/app/entities/coverLetterTemplate/coverLetterTemplate-detail.html',
+                        controller: 'CoverLetterTemplateDetailController'
+                    }
+                },
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('coverLetterTemplate');
+                        return $translate.refresh();
+                    }],
+                    entity: function () {
+                        return {};
+                    }
+                }
+            })
             .state('coverLetterTemplate.detail', {
                 parent: 'entity',
                 url: '/coverLetterTemplate/{id}',
                 data: {
                     roles: ['ROLE_USER'],
-                    pageTitle: 'jhtestApp.coverLetterTemplate.detail.title'
+                    pageTitle: 'jhtestApp.coverLetterTemplate.detail.title',
+                    editing: false
                 },
                 views: {
                     'content@': {
@@ -47,50 +72,12 @@ angular.module('jhtestApp')
                     }]
                 }
             })
-            .state('coverLetterTemplate.new', {
-                parent: 'coverLetterTemplate',
-                url: '/new',
-                data: {
-                    roles: ['ROLE_USER'],
-                },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
-                    $modal.open({
-                        templateUrl: 'scripts/app/entities/coverLetterTemplate/coverLetterTemplate-dialog.html',
-                        controller: 'CoverLetterTemplateDialogController',
-                        size: 'lg',
-                        resolve: {
-                            entity: function () {
-                                return {name: null, text: null, id: null};
-                            }
-                        }
-                    }).result.then(function(result) {
-                        $state.go('coverLetterTemplate', null, { reload: true });
-                    }, function() {
-                        $state.go('coverLetterTemplate');
-                    })
-                }]
-            })
             .state('coverLetterTemplate.edit', {
-                parent: 'coverLetterTemplate',
-                url: '/{id}/edit',
+                parent: 'coverLetterTemplate.detail',
+                url: '/edit',
                 data: {
                     roles: ['ROLE_USER'],
-                },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
-                    $modal.open({
-                        templateUrl: 'scripts/app/entities/coverLetterTemplate/coverLetterTemplate-dialog.html',
-                        controller: 'CoverLetterTemplateDialogController',
-                        size: 'lg',
-                        resolve: {
-                            entity: ['CoverLetterTemplate', function(CoverLetterTemplate) {
-                                return CoverLetterTemplate.get({id : $stateParams.id});
-                            }]
-                        }
-                    }).result.then(function(result) {
-                        $state.go('coverLetterTemplate', null, { reload: true });
-                    }, function() {
-                        $state.go('^');
-                    })
-                }]
+                    editing: true
+                }
             });
     });

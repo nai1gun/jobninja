@@ -15,7 +15,7 @@
                     <span translate="jhtestApp.coverLetterTemplate.name">Name</span>
                 </td>
                 <td>
-                    <input type="text" class="input-sm form-control" value="{{coverLetterTemplate.name}}" readonly>
+                    <input type="text" class="input-sm form-control" value="{{coverLetterTemplate.name}}" ng-readonly="!editing">
                 </td>
             </tr>
             <tr>
@@ -23,7 +23,7 @@
                     <span translate="jhtestApp.coverLetterTemplate.text">Text</span>
                 </td>
                 <td>
-                    <input type="text" class="input-sm form-control" value="{{coverLetterTemplate.text}}" readonly>
+                    <input type="text" class="input-sm form-control" value="{{coverLetterTemplate.text}}" ng-readonly="!editing">
                 </td>
             </tr>
             </tbody>
