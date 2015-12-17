@@ -6,8 +6,8 @@
             "home": "Home",
             "entities": {
                 "main": "Entities",
-                "position": "Position",
-                "coverLetterTemplate": "CoverLetterTemplate",
+                "position": "Positions",
+                "coverLetterTemplate": "Cover letter templates",
                 "additionalEntity": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

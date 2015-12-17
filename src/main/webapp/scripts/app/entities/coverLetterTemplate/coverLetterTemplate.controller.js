@@ -34,4 +34,12 @@ angular.module('jhtestApp')
         $scope.clear = function () {
             $scope.coverLetterTemplate = {name: null, text: null, id: null};
         };
+
+        $scope.textPreview = function(text) {
+            if (!text || text.length < 52) {
+                return text;
+            } else {
+                return text.substring(0, 50) + '...';
+            }
+        };
     });

@@ -3,12 +3,12 @@
         "position" : {
             "home": {
                 "title": "Positions",
-                "createLabel": "Create a new Position",
-                "createOrEditLabel": "Create or edit a Position"
+                "createLabel": "Create a new position",
+                "createOrEditLabel": "Create or edit a position"
             },
-            "created": "A new Position is created",
-            "updated": "The Position is updated",
-            "deleted": "The Position is deleted",
+            "created": "A new position have been created",
+            "updated": "The changes have been saved",
+            "deleted": "The position is deleted",
             "delete": {
                 "question": "Are you sure you want to delete this position?"
             },

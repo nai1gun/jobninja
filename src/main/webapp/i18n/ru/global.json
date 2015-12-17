@@ -6,8 +6,8 @@
             "home": "Главная",
             "entities": {
                 "main": "Сущности",
-                "position": "Должность",
-                "coverLetterTemplate": "CoverLetterTemplate",
+                "position": "Должности",
+                "coverLetterTemplate": "Шаблоны сопроводительных писем",
                 "additionalEntity": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

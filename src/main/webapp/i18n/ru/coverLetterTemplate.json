@@ -2,18 +2,21 @@
     "jhtestApp": {
         "coverLetterTemplate" : {
             "home": {
-                "title": "CoverLetterTemplates",
-                "createLabel": "Create a new CoverLetterTemplate",
-                "createOrEditLabel": "Create or edit a CoverLetterTemplate"
+                "title": "Шаблоны сопроводительного письма",
+                "createLabel": "Создать шаблон",
+                "createOrEditLabel": "Создать или редактировать шаблон"
             },
+            "created": "Новый шаблон создан",
+            "updated": "Изменения сохранены",
+            "deleted": "Шаблон удалён",
             "delete": {
-                "question": "Are you sure you want to delete CoverLetterTemplate {{ id }}?"
+                "question": "Вы уверены, что хотите удалить этот шаблон?"
             },
             "detail": {
-                "title": "CoverLetterTemplate"
+                "title": "Шаблон сопроводительного письма"
             },
-            "name": "Name",
-            "text": "Text"
+            "name": "Название",
+            "text": "Текст"
         }
     }
 }

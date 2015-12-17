@@ -1,21 +1,14 @@
-
-<div>
-    <h2><span translate="jhtestApp.coverLetterTemplate.detail.title">CoverLetterTemplate</span> {{coverLetterTemplate.id}}</h2>
+<form name="editForm" role="form" novalidate ng-submit="editDone()">
+    <h2 translate="jhtestApp.coverLetterTemplate.detail.title">Cover letter template</h2>
     <div class="table-responsive">
         <table class="table table-striped">
-            <thead>
-            <tr>
-                <th translate="entity.detail.field">Field</th>
-                <th translate="entity.detail.value">Value</th>
-            </tr>
-            </thead>
             <tbody>
             <tr>
-                <td>
+                <td class="td-10">
                     <span translate="jhtestApp.coverLetterTemplate.name">Name</span>
                 </td>
                 <td>
-                    <input type="text" class="input-sm form-control" value="{{coverLetterTemplate.name}}" ng-readonly="!editing">
+                    <input type="text" class="input-sm form-control" ng-model="coverLetterTemplate.name" ng-readonly="!editing">
                 </td>
             </tr>
             <tr>
@@ -23,16 +16,29 @@
                     <span translate="jhtestApp.coverLetterTemplate.text">Text</span>
                 </td>
                 <td>
-                    <input type="text" class="input-sm form-control" value="{{coverLetterTemplate.text}}" ng-readonly="!editing">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <textarea type="text" class="input-sm form-control" ng-model="coverLetterTemplate.text" ng-readonly="!editing" msd-elastic></textarea>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
 
-    <button type="submit"
+    <button type="submit" ng-if="coverLetterTemplate.id"
             ui-sref="coverLetterTemplate"
             class="btn btn-info">
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
     </button>
-</div>
+    <button type="button" ng-if="coverLetterTemplate.id && !editing" class="btn btn-success" ng-click="editStart()">
+        <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+    </button>
+    <button type="button" ng-if="!coverLetterTemplate.id || editing" class="btn btn-default" ng-click="editCancel()">
+        <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+    </button>
+    <button type="submit" ng-if="!coverLetterTemplate.id || editing" class="btn btn-primary">
+        <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+    </button>
+</form>

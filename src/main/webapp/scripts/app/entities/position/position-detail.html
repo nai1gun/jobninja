@@ -1,17 +1,10 @@
-
 <form name="editForm" role="form" novalidate ng-submit="editDone()">
-    <h2><span translate="jhtestApp.position.detail.title">Position details</span></h2>
+    <h2 translate="jhtestApp.position.detail.title">Position details</h2>
     <div class="table-responsive">
         <table class="table table-striped">
-            <thead>
-            <tr>
-                <th translate="entity.detail.field">Field</th>
-                <th translate="entity.detail.value">Value</th>
-            </tr>
-            </thead>
             <tbody>
             <tr>
-                <td>
+                <td class="td-20">
                     <span translate="jhtestApp.position.name">Name</span>
                 </td>
                 <td>
@@ -48,7 +41,7 @@
                     <span translate="jhtestApp.position.notes">Notes</span>
                 </td>
                 <td>
-                    <input type="text" class="input-sm form-control" ng-model="position.notes" ng-readonly="!editing">
+                    <textarea type="text" class="input-sm form-control" ng-model="position.notes" ng-readonly="!editing" msd-elastic>></textarea>
                 </td>
             </tr>
             <tr>
@@ -71,8 +64,11 @@
                 <td>
                     <span translate="jhtestApp.position.coverLetter">Cover letter</span>
                 </td>
-                <td>
-                    <textarea type="text" class="input-sm form-control" ng-model="position.coverLetter" ng-readonly="!editing" msd-elastic></textarea>
+                <td></td>
+            </tr>
+            <tr ng-if="hasCoverLetter()">
+                <td colspan="2">
+                    <textarea class="input-sm form-control" ng-model="position.coverLetter" ng-readonly="!editing" msd-elastic></textarea>
                 </td>
             </tr>
             <tr ng-if="hasCV()">
