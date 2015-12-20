@@ -1,6 +1,9 @@
 package com.nailgun.jhtest.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -17,12 +20,13 @@ public class CoverLetterTemplate implements Serializable {
     @Id
     private String id;
 
-
+    @DBRef(lazy = true)
+    @Indexed
+    @JsonIgnore
+    private User user;
 
     @Field("name")
     private String name;
-
-
 
     @Field("text")
     private String text;
@@ -33,6 +37,14 @@ public class CoverLetterTemplate implements Serializable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getName() {

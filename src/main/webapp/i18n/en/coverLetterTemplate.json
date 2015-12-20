@@ -16,7 +16,8 @@
                 "title": "Cover letter template"
             },
             "name": "Name",
-            "text": "Text"
+            "text": "Text",
+            "empty": "Blank"
         }
     }
 }

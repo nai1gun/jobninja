@@ -2,7 +2,9 @@ package com.nailgun.jhtest.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.nailgun.jhtest.domain.CoverLetterTemplate;
+import com.nailgun.jhtest.domain.User;
 import com.nailgun.jhtest.repository.CoverLetterTemplateRepository;
+import com.nailgun.jhtest.service.UserService;
 import com.nailgun.jhtest.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +31,9 @@ public class CoverLetterTemplateResource {
     @Inject
     private CoverLetterTemplateRepository coverLetterTemplateRepository;
 
+    @Inject
+    private UserService userService;
+
     /**
      * POST  /coverLetterTemplates -> Create a new coverLetterTemplate.
      */
@@ -41,6 +46,8 @@ public class CoverLetterTemplateResource {
         if (coverLetterTemplate.getId() != null) {
             return ResponseEntity.badRequest().header("Failure", "A new coverLetterTemplate cannot already have an ID").body(null);
         }
+        User currentUser = userService.getUserWithAuthorities();
+        coverLetterTemplate.setUser(currentUser);
         CoverLetterTemplate result = coverLetterTemplateRepository.save(coverLetterTemplate);
         return ResponseEntity.created(new URI("/api/coverLetterTemplates/" + result.getId()))
                 .headers(HeaderUtil.createEntityCreationAlert("coverLetterTemplate", result.getId().toString()))
@@ -59,6 +66,8 @@ public class CoverLetterTemplateResource {
         if (coverLetterTemplate.getId() == null) {
             return create(coverLetterTemplate);
         }
+        User currentUser = userService.getUserWithAuthorities();
+        coverLetterTemplate.setUser(currentUser);
         CoverLetterTemplate result = coverLetterTemplateRepository.save(coverLetterTemplate);
         return ResponseEntity.ok()
                 .headers(HeaderUtil.createEntityUpdateAlert("coverLetterTemplate", coverLetterTemplate.getId().toString()))
@@ -74,7 +83,8 @@ public class CoverLetterTemplateResource {
     @Timed
     public List<CoverLetterTemplate> getAll() {
         log.debug("REST request to get all CoverLetterTemplates");
-        return coverLetterTemplateRepository.findAll();
+        User currentUser = userService.getUserWithAuthorities();
+        return coverLetterTemplateRepository.findByUser(currentUser.getId());
     }
 
     /**

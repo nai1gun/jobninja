@@ -41,6 +41,7 @@ angular.module('jhtestApp')
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                         $translatePartialLoader.addPart('position');
+                        $translatePartialLoader.addPart('coverLetterTemplate');
                         return $translate.refresh();
                     }],
                     entity: ['$stateParams', 'Position', function($stateParams, Position) {

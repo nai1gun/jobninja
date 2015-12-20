@@ -103,10 +103,31 @@
     <button type="submit" ng-if="editing" class="btn btn-primary">
         <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
     </button>
-    <button type="button" ng-if="!hasCoverLetter()" class="btn btn-success" ng-click="addCoverLetter()">
-        <span class="glyphicon glyphicon-envelope"></span>&nbsp;<span translate="jhtestApp.position.action.addCoverLetter">Add cover letter</span>
-    </button>
     <button type="button" ng-if="!hasCV()" class="btn btn-success" ng-click="editCV()">
         <span class="glyphicon glyphicon-paperclip"></span>&nbsp;<span translate="jhtestApp.position.action.addCv">Add CV</span>
     </button>
+    <span ng-if="!hasCoverLetter()">
+        <button type="button" class="btn btn-success" ng-click="addCoverLetter()" ng-if="!coverLetterTemplates.length">
+            <span class="glyphicon glyphicon-envelope"></span>&nbsp;<span translate="jhtestApp.position.action.addCoverLetter">Add cover letter</span>
+        </button>
+        <span ng-if="coverLetterTemplates.length">
+            <span translate="jhtestApp.position.action.addCoverLetter">Add cover letter</span>:
+            <div class="btn-group" dropdown>
+                <button id="split-button" type="button" class="btn btn-success" ng-click="addCoverLetter()">
+                    {{defaultCoverLetterTemplate.name}}
+                </button>
+                <button type="button" class="btn btn-success" dropdown-toggle>
+                    <span class="caret"></span>
+                    <span class="sr-only">Split button!</span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="split-button">
+                    <li role="menuitem" ng-repeat="coverLetterTemplate in coverLetterTemplates">
+                        <a href="javascript:void(0);" ng-click="addCoverLetter(coverLetterTemplate)">
+                            {{coverLetterTemplate.name}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </span>
+    </span>
 </form>
