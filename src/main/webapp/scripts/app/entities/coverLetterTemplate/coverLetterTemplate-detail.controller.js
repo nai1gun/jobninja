@@ -34,16 +34,16 @@ angular.module('jhtestApp')
             $scope.editing = false;
             if ($scope.coverLetterTemplate.id != null) {
                 CoverLetterTemplate.update($scope.coverLetterTemplate, onUpdateFinished);
-                $state.go('coverLetterTemplate.detail');
             } else {
                 CoverLetterTemplate.save($scope.coverLetterTemplate, onSaveFinished);
-                $state.go('coverLetterTemplate');
             }
         };
         var onUpdateFinished = function (result) {
             $scope.$emit('jhtestApp:coverLetterTemplateUpdate', result);
+            $state.go('coverLetterTemplate.detail');
         };
         var onSaveFinished = function (result) {
             $scope.$emit('jhtestApp:coverLetterTemplateUpdate', result);
+            $state.go('coverLetterTemplate');
         };
     }]);
