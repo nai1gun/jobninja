@@ -40,4 +40,8 @@ angular.module('jhtestApp')
         $scope.clear = function () {
             $scope.position = {name: null, link: null, state: null, created: null, edited: null, notes: null, id: null};
         };
+
+        $scope.showPagination = function() {
+            return $scope.links.last > 1;
+        };
     }]);
