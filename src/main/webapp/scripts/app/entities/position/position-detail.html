@@ -49,7 +49,7 @@
                     <span translate="jhtestApp.position.createdAt">Created</span>
                 </td>
                 <td>
-                    <span class="non-editable">{{position.created}}</span>
+                    <span class="non-editable">{{position.created | date:'yyyy-MM-dd HH:mm'}}</span>
                 </td>
             </tr>
             <tr>
@@ -57,7 +57,7 @@
                     <span translate="jhtestApp.position.edited">Edited</span>
                 </td>
                 <td>
-                    <span class="non-editable">{{position.edited}}</span>
+                    <span class="non-editable">{{position.edited | date:'yyyy-MM-dd HH:mm'}}</span>
                 </td>
             </tr>
             <tr ng-if="hasCoverLetter()">

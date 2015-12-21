@@ -16,7 +16,7 @@
                             {{fileName(cv.filePath)}}
                         </td>
                         <td ng-click="chooseCv(cv)" class="td-clickable">
-                            {{cv.created}}
+                            {{cv.created | date:'yyyy-MM-dd HH:mm'}}
                         </td>
                         <td class="td-actions">
                             <a class="btn btn-sm btn-link" ng-href="{{s3url(cv)}}"

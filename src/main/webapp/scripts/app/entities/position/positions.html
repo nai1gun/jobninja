@@ -55,7 +55,7 @@
                     <td>{{position.company}}</td>
                     <td><a ng-href="{{position.link}}" target="_blank">{{position.link}}</a></td>
                     <td>{{position.state}}</td>
-                    <td>{{position.edited}}</td>
+                    <td>{{position.edited | date:'yyyy-MM-dd HH:mm'}}</td>
                     <td class="td-actions">
                         <button type="submit"
                                 ui-sref="position.detail({id:position.id})"
