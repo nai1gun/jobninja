@@ -249,3 +249,7 @@ ul#strengthBar {
 .pagination > li.active > a {
     cursor: default;
 }
+
+.col-new {
+    padding-left: 0;
+}
