@@ -5,8 +5,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <button class="btn btn-primary" ui-sref="coverLetterTemplate.new">
-                    <span class="glyphicon glyphicon-flash"></span> <span translate="jhtestApp.coverLetterTemplate.home.createLabel">Create a new CoverLetterTemplate</span>
+                <button class="btn btn-success" ui-sref="coverLetterTemplate.new">
+                    <span class="glyphicon glyphicon-plus"></span> <span translate="jhtestApp.coverLetterTemplate.home.createLabel">Create a new CoverLetterTemplate</span>
                 </button>
             </div>
         </div>
@@ -29,7 +29,7 @@
                             <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
                         </button>
                         <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                            <span class="glyphicon glyphicon-trash"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
                         </button>
                     </div>
                 </form>
@@ -53,13 +53,13 @@
                     <td class="td-actions">
                         <button type="submit"
                                 ui-sref="coverLetterTemplate.detail({id:coverLetterTemplate.id})"
-                                class="btn btn-info btn-sm">
-                            <span class="glyphicon glyphicon-list"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                                class="btn btn-default btn-sm">
+                            <span translate="entity.action.details">Details</span>
                         </button>
                         <button type="submit"
                                 ng-click="delete(coverLetterTemplate.id)"
-                                class="btn btn-danger btn-sm">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                                class="btn btn-default btn-sm btn-delete">
+                            <span class="glyphicon glyphicon-trash"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
                         </button>
                     </td>
                 </tr>

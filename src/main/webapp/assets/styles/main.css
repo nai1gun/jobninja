@@ -208,12 +208,30 @@ ul#strengthBar {
     margin-right: 20px;
 }
 
+.btn-delete {
+    color: #d9534f;
+    font-weight: bold;
+}
+
+.btn-delete:hover {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+}
+
 .progress-cv-upload {
-    width: 100%; margin-bottom: 0;
+    width: 100%;
+    margin-bottom: 0;
 }
 
 .progress-bar-cv-upload {
     width: 100%;
+}
+
+.choose-cv-hint {
+    white-space: nowrap;
+    margin-left: -10px;
+    margin-right: 10px;
 }
 
 .td-10 {

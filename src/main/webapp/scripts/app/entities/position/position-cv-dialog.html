@@ -23,8 +23,8 @@
                                target="_blank">
                                 <span translate="entity.action.download">Download</span>
                             </a>
-                            <button type="button" class="btn btn-sm btn-danger" ng-click="deleteCv(cv)">
-                                <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                            <button type="button" class="btn btn-sm btn-default btn-delete" ng-click="deleteCv(cv)">
+                                <span class="glyphicon glyphicon-trash"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
                             </button>
                         </td>
                     </tr>
@@ -36,8 +36,11 @@
             <table>
                 <tr>
                     <td class="col-cv-upload">
-                        <button type="file" ngf-select ng-model="cvFile" class="btn btn-primary btn-cv-upload">
+                        <button type="file" ngf-select ng-model="cvFile" class="btn btn-success btn-cv-upload">
                             <span class="glyphicon glyphicon-open-file"></span>&nbsp;<span translate="entity.action.uploadnew">Upload new file</span></button>
+                    </td>
+                    <td class="col-cv-upload" ng-if="cvs.length">
+                        <span class="choose-cv-hint" translate="jhtestApp.position.cvHint">Or choose one of listed above</span>
                     </td>
                     <td>
                         <div class="progress progress-cv-upload" ng-show="uploading">

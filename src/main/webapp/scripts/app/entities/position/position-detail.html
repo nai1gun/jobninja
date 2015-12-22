@@ -77,11 +77,11 @@
                 </td>
                 <td>
                     <span class="non-editable"><a ng-href="{{s3url(position.cv)}}" target="_blank">{{fileName(position.cv.filePath)}}</a></span>
-                    <button type="button" class="btn btn-sm btn-success" ng-click="editCV()" ng-class="{invisible: !editing}">
+                    <button type="button" class="btn btn-sm btn-default" ng-click="editCV()" ng-class="{invisible: !editing}">
                         <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.change">Change</span>
                     </button>
-                    <button type="button" class="btn btn-sm btn-danger" ng-click="removeCv(cv)" ng-class="{invisible: !editing}">
-                        <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.remove">Remove</span>
+                    <button type="button" class="btn btn-sm btn-default btn-delete" ng-click="removeCv(cv)" ng-class="{invisible: !editing}">
+                        <span class="glyphicon glyphicon-trash"></span>&nbsp;<span translate="entity.action.remove">Remove</span>
                     </button>
                 </td>
             </tr>
@@ -91,32 +91,32 @@
 
     <button type="button"
             ui-sref="position"
-            class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+            class="btn btn-default">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back">Back</span>
     </button>
     <button type="button" ng-if="!editing" class="btn btn-success" ng-click="editStart()">
-        <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+        <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit">Edit</span>
     </button>
     <button type="button" ng-if="editing" class="btn btn-default" ng-click="editCancel()">
         <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
     </button>
-    <button type="submit" ng-if="editing" class="btn btn-primary">
+    <button type="submit" ng-if="editing" class="btn btn-success">
         <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
     </button>
-    <button type="button" ng-if="!hasCV()" class="btn btn-success" ng-click="editCV()">
+    <button type="button" ng-if="!hasCV()" class="btn btn-default" ng-click="editCV()">
         <span class="glyphicon glyphicon-paperclip"></span>&nbsp;<span translate="jhtestApp.position.action.addCv">Add CV</span>
     </button>
     <span ng-if="!hasCoverLetter()">
-        <button type="button" class="btn btn-success" ng-click="addCoverLetter()" ng-if="!coverLetterTemplates.length">
+        <button type="button" class="btn btn-default" ng-click="addCoverLetter()" ng-if="!coverLetterTemplates.length">
             <span class="glyphicon glyphicon-envelope"></span>&nbsp;<span translate="jhtestApp.position.action.addCoverLetter">Add cover letter</span>
         </button>
         <span ng-if="coverLetterTemplates.length">
             <span translate="jhtestApp.position.action.addCoverLetter">Add cover letter</span>:
             <div class="btn-group" dropdown>
-                <button id="split-button" type="button" class="btn btn-success" ng-click="addCoverLetter()">
+                <button id="split-button" type="button" class="btn btn-default" ng-click="addCoverLetter()">
                     {{defaultCoverLetterTemplate.name}}
                 </button>
-                <button type="button" class="btn btn-success" dropdown-toggle>
+                <button type="button" class="btn btn-default" dropdown-toggle>
                     <span class="caret"></span>
                     <span class="sr-only">Split button!</span>
                 </button>

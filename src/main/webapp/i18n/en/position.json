@@ -25,6 +25,7 @@
             "notes": "Notes",
             "coverLetter": "Cover letter",
             "cv": "CV",
+            "cvHint": "Or choose one of listed above",
             "action": {
                 "addCoverLetter": "Add cover letter",
                 "addCv": "Add CV"
