@@ -1,20 +1,9 @@
 {
     "main": {
         "title": "Job Ninja!",
-        "subtitle": "Это ваша домашняя страница",
         "logged": {
             "message": "Вы вошли как пользователь \"{{username}}\"."
         },
-        "description": "Приложение позволяет соискателям управлять своими заявками на работу и интересными вакансиями.<br><a href=\"/#/register\">Зарегистрируйтесь</a> или <a href=\"/#/login\">авторизуйтесь</a>, чтобы опробовать его возможности.",
-        "question": "Если у Вас возникли вопросы по JHipster:",
-        "link": {
-            "homepage": "JHipster домашняя страница",
-            "stackoverflow": "JHipster на Stack Overflow",
-            "bugtracker": "JHipster баг трекер",
-            "chat": "JHipster public chat room",
-            "contact": "пользователь @java_hipster в Twitter"
-        },
-        "like": "Если вам нравится JHipster, не забудьте дать нам звёздочку на",
-        "github": "Github"
+        "description": "Приложение позволяет соискателям управлять своими заявками на работу и интересными вакансиями.<br><br><a class=\"btn btn-sm btn-success\" href=\"/#/register\">Зарегистрируйтесь</a> или <a href=\"/#/login\">войдите</a>, чтобы посмотреть, как это работает."
     }
 }
