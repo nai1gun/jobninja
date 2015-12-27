@@ -11,7 +11,7 @@
 
     <groupId>com.nailgun.jhtest</groupId>
     <artifactId>jhtest</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.1</version>
     <packaging>war</packaging>
 
     <name>jhtest</name>
