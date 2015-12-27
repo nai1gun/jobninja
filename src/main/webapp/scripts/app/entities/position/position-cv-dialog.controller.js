@@ -63,7 +63,7 @@ angular.module('jhtestApp').controller('PositionCvDialogController',
         };
 
         $scope.deleteCv = function(cv) {
-            if (cv.filePath == $scope.position.cv.filePath) {
+            if ($scope.position.cv && cv.filePath == $scope.position.cv.filePath) {
                 $scope.position.cv = null;
             }
             UserCv.delete(cv, function() {
