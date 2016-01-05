@@ -4,7 +4,8 @@
         "logged": {
             "message": "You are logged in as user \"{{username}}\"."
         },
-        "description": "Simple and powerful tool to manage your job seeking and application process.<br><br><a class=\"btn btn-sm btn-success\" href=\"/#/register\">Sign up for free</a> or <a href=\"/#/login\">log in</a> to see how it works.",
+        "description": "Simple and powerful tool to manage your job seeking and application process.",
+        "login": "<a class=\"btn btn-sm btn-success\" href=\"/#/register\">Sign up for free</a> or <a href=\"/#/login\">log in</a> to see how it works.",
         "features": {
             "title": "Key features:",
             "positions": "Creating and editing a list of interesting positions",

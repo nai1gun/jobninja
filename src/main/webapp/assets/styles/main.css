@@ -266,6 +266,11 @@ li.nav-login {
     margin-right: -19px;
 }
 
-.summary {
+.main-summary {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.main-login {
     margin-bottom: 20px;
 }
