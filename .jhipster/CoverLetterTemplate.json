@@ -1,0 +1,17 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "text",
+            "fieldType": "String"
+        }
+    ],
+    "dto": "no",
+    "pagination": "no"
+}
