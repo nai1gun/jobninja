@@ -1,6 +1,6 @@
 <div>
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
             <h1 translate="register.title">Registration</h1>
 
             <div class="alert alert-success" ng-show="success" translate="register.messages.success">
@@ -113,6 +113,13 @@
 
                 <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary" translate="register.form.button">Register</button>
             </form>
+            <p></p>
+            <p translate="register.or">or</p>
+            <div>
+                <jh-social ng-provider="google"></jh-social>
+                <jh-social ng-provider="facebook"></jh-social>
+                <jh-social ng-provider="twitter"></jh-social>
+            </div>
             <p></p>
             <div class="alert alert-warning" translate="global.messages.info.authenticated">
                 Or you can <a href="#/login">authenticate</a> with an existing account.

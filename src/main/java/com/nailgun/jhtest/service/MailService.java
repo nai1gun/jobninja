@@ -2,6 +2,7 @@ package com.nailgun.jhtest.service;
 
 import com.nailgun.jhtest.domain.User;
 import org.apache.commons.lang.CharEncoding;
+import org.apache.commons.lang.WordUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.MessageSource;
@@ -93,6 +94,18 @@ public class MailService {
         context.setVariable("baseUrl", baseUrl);
         String content = templateEngine.process("passwordResetEmail", context);
         String subject = messageSource.getMessage("email.reset.title", null, locale);
+        sendEmail(user.getEmail(), subject, content, false, true);
+    }
+
+    @Async
+    public void sendSocialRegistrationValidationEmail(User user, String provider) {
+        log.debug("Sending social registration validation e-mail to '{}'", user.getEmail());
+        Locale locale = Locale.forLanguageTag(user.getLangKey());
+        Context context = new Context(locale);
+        context.setVariable("user", user);
+        context.setVariable("provider", WordUtils.capitalize(provider));
+        String content = templateEngine.process("socialRegistrationValidationEmail", context);
+        String subject = messageSource.getMessage("email.social.registration.title", null, locale);
         sendEmail(user.getEmail(), subject, content, false, true);
     }
 }

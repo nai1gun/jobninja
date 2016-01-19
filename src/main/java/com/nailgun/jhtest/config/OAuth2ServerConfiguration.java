@@ -6,12 +6,14 @@ import com.nailgun.jhtest.repository.OAuth2RefreshTokenRepository;
 import com.nailgun.jhtest.security.AjaxLogoutSuccessHandler;
 import com.nailgun.jhtest.security.AuthoritiesConstants;
 import com.nailgun.jhtest.security.Http401UnauthorizedEntryPoint;
+import com.nailgun.jhtest.security.social.SocialAuthFilter;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.bind.RelaxedPropertyResolver;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -22,6 +24,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.inject.Inject;
@@ -39,9 +42,13 @@ public class OAuth2ServerConfiguration {
         @Inject
         private AjaxLogoutSuccessHandler ajaxLogoutSuccessHandler;
 
+        @Inject
+        private SocialAuthFilter socialAuthFilter;
+
         @Override
         public void configure(HttpSecurity http) throws Exception {
             http
+                .addFilterBefore(socialAuthFilter, FilterSecurityInterceptor.class)
                 .exceptionHandling()
                 .authenticationEntryPoint(authenticationEntryPoint)
             .and()
@@ -59,6 +66,7 @@ public class OAuth2ServerConfiguration {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
                 .authorizeRequests()
+                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .antMatchers("/api/authenticate").permitAll()
                 .antMatchers("/api/register").permitAll()
                 .antMatchers("/api/logs/**").hasAnyAuthority(AuthoritiesConstants.ADMIN)
@@ -122,7 +130,7 @@ public class OAuth2ServerConfiguration {
                 .withClient(propertyResolver.getProperty(PROP_CLIENTID))
                 .scopes("read", "write")
                 .authorities(AuthoritiesConstants.ADMIN, AuthoritiesConstants.USER)
-                .authorizedGrantTypes("password", "refresh_token")
+                .authorizedGrantTypes("password", "refresh_token", "authorization_code", "implicit")
                 .secret(propertyResolver.getProperty(PROP_SECRET))
                 .accessTokenValiditySeconds(propertyResolver.getProperty(PROP_TOKEN_VALIDITY_SECONDS, Integer.class, 1800));
         }

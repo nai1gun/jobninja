@@ -14,6 +14,21 @@ spring:
     thymeleaf:
         mode: XHTML
         cache: true
+    social:
+        # see https://developers.google.com/+/web/signin/server-side-flow#step_1_create_a_client_id_and_client_secret
+        google:
+            clientId: 678655644001-m6db8qpgo5mlc8chvp668pdgop898eht.apps.googleusercontent.com
+            clientSecret: secret
+
+        # see https://developers.facebook.com/docs/facebook-login/v2.2
+        facebook:
+            clientId: 1535817236730992
+            clientSecret: secret
+
+        # see https://apps.twitter.com/app/
+        twitter:
+            clientId: wmOzmnemRtJK2dDiF0bpfc3ea
+            clientSecret: secret
 
 metrics:
     jmx.enabled: true
