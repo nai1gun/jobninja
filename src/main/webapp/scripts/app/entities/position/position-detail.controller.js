@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .controller('PositionDetailController', ['$scope', '$rootScope', '$stateParams', '$state', '$timeout', 'entity', 'Position', 'PositionState', 'DateUtils', 'PositionUtils', 'CoverLetterTemplate', '$translate',
-        function ($scope, $rootScope, $stateParams, $state, $timeout, entity, Position, PositionState, DateUtils, PositionUtils, CoverLetterTemplate, $translate) {
+    .controller('PositionDetailController', ['$scope', '$rootScope', '$stateParams', '$state', '$timeout', 'entity', 'Position', 'PositionState', 'DateUtils', 'PositionUtils', 'CoverLetterTemplate', 'ParseLinks', '$translate',
+        function ($scope, $rootScope, $stateParams, $state, $timeout, entity, Position, PositionState, DateUtils, PositionUtils, CoverLetterTemplate, ParseLinks, $translate) {
         $scope.position = entity;
         $scope.$position = angular.copy($scope.position);
         $scope.editing = $state.$current.data.editing;
@@ -68,6 +68,8 @@ angular.module('jhtestApp')
         $scope.s3url = PositionUtils.s3url;
 
         $scope.fileName = PositionUtils.fileName;
+
+        $scope.makeHref = ParseLinks.makeHref;
 
         var onSaveFinished = function (result) {
             $scope.$emit('jhtestApp:positionUpdate', result);

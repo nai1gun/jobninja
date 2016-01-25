@@ -319,3 +319,10 @@ Social Buttons
 }
 
 /* end social */
+
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: transparent;
+    opacity: 1;
+    border: 1px solid transparent;
+    box-shadow: none;
+}

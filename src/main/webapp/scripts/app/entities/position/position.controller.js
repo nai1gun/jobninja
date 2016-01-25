@@ -44,4 +44,6 @@ angular.module('jhtestApp')
         $scope.showPagination = function() {
             return $scope.links && $scope.links.last > 1;
         };
+
+        $scope.makeHref = ParseLinks.makeHref;
     }]);

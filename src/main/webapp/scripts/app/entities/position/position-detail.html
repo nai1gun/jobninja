@@ -24,7 +24,10 @@
                     <span translate="jhtestApp.position.link">Link</span>
                 </td>
                 <td>
-                    <input type="text" class="input-sm form-control" ng-model="position.link" ng-readonly="!editing">
+                    <a ng-href="{{makeHref(position.link)}}" target="_blank" ng-if="!editing">
+                        <input type="text" class="input-sm form-control" ng-model="position.link" ng-readonly="true">
+                    </a>
+                    <input type="text" class="input-sm form-control" ng-model="position.link" ng-if="editing">
                 </td>
             </tr>
             <tr>
@@ -41,7 +44,8 @@
                     <span translate="jhtestApp.position.notes">Notes</span>
                 </td>
                 <td>
-                    <textarea type="text" class="input-sm form-control" ng-model="position.notes" ng-readonly="!editing" msd-elastic>></textarea>
+                    <textarea type="text" class="input-sm form-control" ng-model="position.notes"
+                              ng-readonly="!editing" msd-elastic style="resize: none;"></textarea>
                 </td>
             </tr>
             <tr>

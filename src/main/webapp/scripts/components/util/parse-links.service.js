@@ -31,5 +31,12 @@ angular.module('jhtestApp')
             });
 
             return links;
-        }
+        };
+
+        this.makeHref = function(url) {
+            if (url.lastIndexOf('http://', 0) == 0 || url.lastIndexOf('https://', 0) == 0 ) {
+                return url;
+            }
+            return 'http://' + url;
+        };
     });
