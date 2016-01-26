@@ -89,6 +89,17 @@
                     </button>
                 </td>
             </tr>
+            <tr ng-if="glassdoorEntries[$position.company].url">
+                <td>
+                    <span>Glassdoor rating:</span>
+                    <span ng-bind="glassdoorEntries[$position.company].rating"></span>
+                </td>
+                <td>
+                    <a ng-href="{{glassdoorEntries[$position.company].url}}" target="_blank">
+                        See on GlassDoor
+                    </a>
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>

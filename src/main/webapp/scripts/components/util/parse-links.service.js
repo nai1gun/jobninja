@@ -34,6 +34,9 @@ angular.module('jhtestApp')
         };
 
         this.makeHref = function(url) {
+            if (!url) {
+                return url;
+            }
             if (url.lastIndexOf('http://', 0) == 0 || url.lastIndexOf('https://', 0) == 0 ) {
                 return url;
             }
