@@ -326,3 +326,11 @@ Social Buttons
     border: 1px solid transparent;
     box-shadow: none;
 }
+
+select.form-control[disabled] {
+    cursor: default;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
