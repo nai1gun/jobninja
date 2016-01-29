@@ -29,6 +29,10 @@
             "action": {
                 "addCoverLetter": "Добавить сопроводительное письмо",
                 "addCv": "Добавить резюме"
+            },
+            "glassdoor": {
+                "rating": "Рейтинг",
+                "see": "Посмотреть на GlassDoor"
             }
         }
     }

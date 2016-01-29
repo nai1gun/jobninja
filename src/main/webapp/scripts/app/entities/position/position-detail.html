@@ -91,13 +91,20 @@
             </tr>
             <tr ng-if="glassdoorEntries[$position.company].url">
                 <td>
-                    <span>Glassdoor rating:</span>
-                    <span ng-bind="glassdoorEntries[$position.company].rating"></span>
+                    <span class="glassdoor img-responsive img-rounded"></span>
                 </td>
                 <td>
-                    <a ng-href="{{glassdoorEntries[$position.company].url}}" target="_blank">
-                        See on GlassDoor
-                    </a>
+                    <span class="non-editable">
+                        <span translate="jhtestApp.position.glassdoor.rating">Rating</span>:&nbsp;
+                        <span ng-bind="glassdoorEntries[$position.company].rating"
+                            ng-style="glassdoorRatingStyle($position.company)"
+                            class="glassdoor-rating"></span>
+                        &nbsp;&nbsp;
+                        <a ng-href="{{glassdoorEntries[$position.company].url}}" target="_blank"
+                           translate="jhtestApp.position.glassdoor.see">
+                            See on GlassDoor
+                        </a>
+                    </span>
                 </td>
             </tr>
             </tbody>

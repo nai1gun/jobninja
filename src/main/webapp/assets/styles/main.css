@@ -334,3 +334,16 @@ select.form-control[disabled] {
     text-indent: 1px;
     text-overflow: '';
 }
+
+.glassdoor {
+    display: inline-block;
+    width: 100px;
+    height: 22px;
+    background: url("../images/glassdoor_logo.png") no-repeat center top;
+    background-size: contain;
+}
+
+.glassdoor-rating {
+    font-size: 1.25em;
+    font-weight: bold;
+}

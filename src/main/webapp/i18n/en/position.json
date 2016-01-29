@@ -29,6 +29,10 @@
             "action": {
                 "addCoverLetter": "Add cover letter",
                 "addCv": "Add CV"
+            },
+            "glassdoor": {
+                "rating": "Rating",
+                "see": "See on GlassDoor"
             }
         }
     }

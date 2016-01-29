@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .controller('PositionDetailController', ['$scope', '$rootScope', '$stateParams', '$state', '$timeout', 'entity', 'Position', 'PositionState', 'DateUtils', 'PositionUtils', 'CoverLetterTemplate', 'ParseLinks', 'Glassdoor', '$translate',
-        function ($scope, $rootScope, $stateParams, $state, $timeout, entity, Position, PositionState, DateUtils, PositionUtils, CoverLetterTemplate, ParseLinks, Glassdoor, $translate) {
+    .controller('PositionDetailController', ['$scope', '$rootScope', '$stateParams', '$state', '$timeout', 'entity', 'Position', 'PositionState', 'DateUtils', 'ColorUtils', 'PositionUtils', 'CoverLetterTemplate', 'ParseLinks', 'Glassdoor', '$translate',
+        function ($scope, $rootScope, $stateParams, $state, $timeout, entity, Position, PositionState, DateUtils, ColorUtils, PositionUtils, CoverLetterTemplate, ParseLinks, Glassdoor, $translate) {
         $scope.position = entity;
         $scope.$position = angular.copy($scope.position);
         $scope.editing = $state.$current.data.editing;
@@ -84,6 +84,18 @@ angular.module('jhtestApp')
         $scope.fileName = PositionUtils.fileName;
 
         $scope.makeHref = ParseLinks.makeHref;
+
+        $scope.glassdoorRatingStyle = function(company) {
+            if (!company) {
+                return {color: '#000000'};
+            }
+            var glassdoorEntry = $scope.glassdoorEntries[company];
+            if (!glassdoorEntry) {
+                return {color: '#000000'};
+            }
+            var rating = glassdoorEntry.rating;
+            return {color: ColorUtils.ratingToColor(rating, 1, 5)};
+        };
 
         var onSaveFinished = function (result) {
             $scope.$emit('jhtestApp:positionUpdate', result);
