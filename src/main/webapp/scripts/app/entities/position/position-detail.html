@@ -89,18 +89,18 @@
                     </button>
                 </td>
             </tr>
-            <tr ng-if="glassdoorEntries[$position.company].url">
+            <tr ng-if="getGlassdoorEntry().url">
                 <td>
                     <span class="glassdoor img-responsive img-rounded"></span>
                 </td>
                 <td>
                     <span class="non-editable">
                         <span translate="jhtestApp.position.glassdoor.rating">Rating</span>:&nbsp;
-                        <span ng-bind="glassdoorEntries[$position.company].rating"
-                            ng-style="glassdoorRatingStyle($position.company)"
+                        <span ng-bind="getGlassdoorEntry().rating"
+                            ng-style="glassdoorRatingStyle()"
                             class="glassdoor-rating"></span>
                         &nbsp;&nbsp;
-                        <a ng-href="{{glassdoorEntries[$position.company].url}}" target="_blank"
+                        <a ng-href="{{getGlassdoorEntry().url}}" target="_blank"
                            translate="jhtestApp.position.glassdoor.see">
                             See on GlassDoor
                         </a>

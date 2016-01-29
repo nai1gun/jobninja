@@ -4,7 +4,6 @@ angular.module('jhtestApp')
     .controller('PositionDetailController', ['$scope', '$rootScope', '$stateParams', '$state', '$timeout', 'entity', 'Position', 'PositionState', 'DateUtils', 'ColorUtils', 'PositionUtils', 'CoverLetterTemplate', 'ParseLinks', 'Glassdoor', '$translate',
         function ($scope, $rootScope, $stateParams, $state, $timeout, entity, Position, PositionState, DateUtils, ColorUtils, PositionUtils, CoverLetterTemplate, ParseLinks, Glassdoor, $translate) {
         $scope.position = entity;
-        $scope.$position = angular.copy($scope.position);
         $scope.editing = $state.$current.data.editing;
         $scope.defaultCoverLetterTemplate = {};
         $scope.coverLetterTemplates = [];
@@ -13,6 +12,7 @@ angular.module('jhtestApp')
         $scope.load = function (id) {
             Position.get({id: id}, function(result) {
                 $scope.position = result;
+                shadowPosition();
                 updatePosition();
             });
         };
@@ -36,7 +36,6 @@ angular.module('jhtestApp')
             $scope.position.edited = DateUtils.convertLocaleDateToServer(new Date());
             Position.update($scope.position, onSaveFinished);
             $scope.$position = angular.copy($scope.position);
-            checkGlassdoor();
             $state.go('position.detail');
         };
         $scope.addCoverLetter = function(coverLetterTemplate) {
@@ -74,10 +73,11 @@ angular.module('jhtestApp')
 
         $scope.makeHref = ParseLinks.makeHref;
 
-        $scope.glassdoorRatingStyle = function(company) {
-            if (!company) {
+        $scope.glassdoorRatingStyle = function() {
+            if (!$scope.$position || !$scope.$position.company) {
                 return {color: '#000000'};
             }
+            var company = $scope.$position.company;
             var glassdoorEntry = $scope.glassdoorEntries[company];
             if (!glassdoorEntry) {
                 return {color: '#000000'};
@@ -86,24 +86,50 @@ angular.module('jhtestApp')
             return {color: ColorUtils.ratingToColor(rating, 1, 5)};
         };
 
+        $scope.getGlassdoorEntry = function() {
+            if (!$scope.$position || !$scope.$position.company) {
+                return {};
+            }
+            return $scope.glassdoorEntries[$scope.$position.company];
+        };
+
         var onSaveFinished = function (result) {
             $scope.$emit('jhtestApp:positionUpdate', result);
         };
 
         var updatePosition = function() {
             $state.$current.data.position = $scope.position;
+            checkGlassdoor();
+        };
+
+        var shadowPosition = function() {
+            if ($scope.position.$promise) {
+                $scope.position.$promise.then(function(position) {
+                   $scope.$position = position;
+                });
+            }
+            $scope.$position = $scope.position;
         };
 
         var glassdoorPending = false;
 
         var checkGlassdoor = function() {
-            var company = $scope.position.company;
-            if (company && $scope.glassdoorEntries[company] === undefined && !glassdoorPending) {
-                glassdoorPending = true;
-                Glassdoor.get({employerName: company}).$promise.then(function(result) {
-                    $scope.glassdoorEntries[company] = result.toJSON();
-                    glassdoorPending = false;
+            var company = $scope.$position.company;
+            if (company) {
+                doCheckGlassdoor(company);
+            } else if ($scope.$position.$promise) {
+                $scope.$position.$promise.then(function(position) {
+                    doCheckGlassdoor(position.company);
                 });
+            }
+            function doCheckGlassdoor(company) {
+                if (company && $scope.glassdoorEntries[company] === undefined && !glassdoorPending) {
+                    glassdoorPending = true;
+                    Glassdoor.get({employerName: company}).$promise.then(function(result) {
+                        $scope.glassdoorEntries[company] = result.toJSON();
+                        glassdoorPending = false;
+                    });
+                }
             }
         };
 
@@ -125,8 +151,8 @@ angular.module('jhtestApp')
             }
         });
 
-        updatePosition();
+        shadowPosition();
 
-        checkGlassdoor();
+        updatePosition();
 
     }]);
