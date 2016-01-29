@@ -36,6 +36,7 @@ angular.module('jhtestApp')
             $scope.position.edited = DateUtils.convertLocaleDateToServer(new Date());
             Position.update($scope.position, onSaveFinished);
             $scope.$position = angular.copy($scope.position);
+            checkGlassdoor();
             $state.go('position.detail');
         };
         $scope.addCoverLetter = function(coverLetterTemplate) {
@@ -67,18 +68,6 @@ angular.module('jhtestApp')
             return $scope.position.cv != undefined && $scope.position.cv != null;
         };
 
-        var glassdoorPending = false;
-
-        $scope.$watch('$position.company', function(company) {
-           if (company && $scope.glassdoorEntries[company] === undefined && !glassdoorPending) {
-               glassdoorPending = true;
-               Glassdoor.get({employerName: company}).$promise.then(function(result) {
-                   $scope.glassdoorEntries[company] = result.toJSON();
-                   glassdoorPending = false;
-               });
-           }
-        });
-
         $scope.s3url = PositionUtils.s3url;
 
         $scope.fileName = PositionUtils.fileName;
@@ -105,6 +94,19 @@ angular.module('jhtestApp')
             $state.$current.data.position = $scope.position;
         };
 
+        var glassdoorPending = false;
+
+        var checkGlassdoor = function() {
+            var company = $scope.position.company;
+            if (company && $scope.glassdoorEntries[company] === undefined && !glassdoorPending) {
+                glassdoorPending = true;
+                Glassdoor.get({employerName: company}).$promise.then(function(result) {
+                    $scope.glassdoorEntries[company] = result.toJSON();
+                    glassdoorPending = false;
+                });
+            }
+        };
+
         PositionState.getAll(function(states) {
             $scope.states = states;
         });
@@ -124,5 +126,7 @@ angular.module('jhtestApp')
         });
 
         updatePosition();
+
+        checkGlassdoor();
 
     }]);
