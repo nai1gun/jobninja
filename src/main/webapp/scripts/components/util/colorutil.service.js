@@ -16,9 +16,7 @@ angular.module('jhtestApp')
                 green = 200;
                 red   = Math.round(200 * (maximum - rating) / (maximum - median));
             }
-            var color = '#' + pad0(red.toString(16)) + pad0(green.toString(16)) + '00';
-            console.log(color);
-            return color;
+            return '#' + pad0(red.toString(16)) + pad0(green.toString(16)) + '00';
         };
 
         function pad0(str) {
