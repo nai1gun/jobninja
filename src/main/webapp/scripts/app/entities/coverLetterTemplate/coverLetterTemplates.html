@@ -51,11 +51,10 @@
                     <td>{{coverLetterTemplate.name}}</td>
                     <td>{{textPreview(coverLetterTemplate.text)}}</td>
                     <td class="td-actions">
-                        <button type="submit"
-                                ui-sref="coverLetterTemplate.detail({id:coverLetterTemplate.id})"
-                                class="btn btn-default btn-sm">
+                        <a ui-sref="coverLetterTemplate.detail({id:coverLetterTemplate.id})"
+                           class="btn btn-default btn-sm">
                             <span translate="entity.action.details">Details</span>
-                        </button>
+                        </a>
                         <button type="submit"
                                 ng-click="delete(coverLetterTemplate.id)"
                                 class="btn btn-default btn-sm btn-delete">

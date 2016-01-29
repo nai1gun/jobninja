@@ -28,11 +28,9 @@
         </table>
     </div>
 
-    <button type="submit" ng-if="coverLetterTemplate.id"
-            ui-sref="coverLetterTemplate"
-            class="btn btn-default">
+    <a ng-if="coverLetterTemplate.id" ui-sref="coverLetterTemplate" class="btn btn-default">
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
-    </button>
+    </a>
     <button type="button" ng-if="coverLetterTemplate.id && !editing" class="btn btn-success" ng-click="editStart()">
         <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
     </button>

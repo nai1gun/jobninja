@@ -111,11 +111,9 @@
         </table>
     </div>
 
-    <button type="button"
-            ui-sref="position"
-            class="btn btn-default">
+    <a ui-sref="position" class="btn btn-default">
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back">Back</span>
-    </button>
+    </a>
     <button type="button" ng-if="!editing" class="btn btn-success" ng-click="editStart()">
         <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit">Edit</span>
     </button>
