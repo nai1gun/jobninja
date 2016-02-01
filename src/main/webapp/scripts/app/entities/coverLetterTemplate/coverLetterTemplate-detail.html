@@ -3,27 +3,42 @@
     <div class="table-responsive">
         <table class="table table-striped">
             <tbody>
-            <tr>
-                <td class="td-10">
-                    <span translate="jhtestApp.coverLetterTemplate.name">Name</span>
-                </td>
-                <td>
-                    <input type="text" class="input-sm form-control" ng-model="coverLetterTemplate.name" ng-readonly="!editing">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="jhtestApp.coverLetterTemplate.text">Text</span>
-                </td>
-                <td>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <textarea type="text" class="input-sm form-control" ng-model="coverLetterTemplate.text"
-                              ng-readonly="!editing" msd-elastic style="resize: none;"></textarea>
-                </td>
-            </tr>
+                <tr>
+                    <td class="td-10">
+                        <span translate="jhtestApp.coverLetterTemplate.name">Name</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" ng-model="coverLetterTemplate.name" ng-readonly="!editing">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="jhtestApp.coverLetterTemplate.text">Text</span>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <textarea type="text" class="input-sm form-control" ng-model="coverLetterTemplate.text"
+                                  ng-readonly="!editing" msd-elastic insert-text style="resize: none;"></textarea>
+                    </td>
+                </tr>
+                <tr ng-if="editing">
+                    <td>
+                        <span translate="jhtestApp.coverLetterTemplate.placeholders">
+                            Placeholders
+                        </span>
+                    </td>
+                    <td>
+                        <span ng-repeat="(key, placeholder) in placeholders">
+                            <span title="{{placeholder.title}}" class="clickable"
+                                  ng-click="putPlaceholder(placeholder)">
+                                [{{placeholder.placeholder}}]
+                            </span>
+                        </span>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>

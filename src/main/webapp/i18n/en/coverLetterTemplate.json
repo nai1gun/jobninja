@@ -17,7 +17,22 @@
             },
             "name": "Name",
             "text": "Text",
-            "empty": "Blank"
+            "empty": "Blank",
+            "placeholders": "Placeholders",
+            "templatePlaceholder": {
+                "position": {
+                    "placeholder": "position",
+                    "title": "Position name"
+                },
+                "company": {
+                    "placeholder": "company",
+                    "title": "Company name"
+                },
+                "location": {
+                    "placeholder": "location",
+                    "title": "Job location"
+                }
+            }
         }
     }
 }

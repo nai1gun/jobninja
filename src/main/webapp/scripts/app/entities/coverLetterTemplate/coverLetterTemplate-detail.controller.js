@@ -2,11 +2,12 @@
 
 angular.module('jhtestApp')
     .controller('CoverLetterTemplateDetailController', [
-        '$scope', '$rootScope', '$state', 'entity', 'CoverLetterTemplate',
-        function ($scope, $rootScope, $state, entity, CoverLetterTemplate) {
+        '$scope', '$rootScope', '$state', 'entity', 'CoverLetterTemplate', 'CoverLetterTemplatePlaceholder',
+        function ($scope, $rootScope, $state, entity, CoverLetterTemplate, CoverLetterTemplatePlaceholder) {
         $scope.coverLetterTemplate = entity;
         $scope.$coverLetterTemplate = angular.copy($scope.coverLetterTemplate);
         $scope.editing = $state.$current.data.editing;
+        $scope.placeholders = {};
 
         $scope.load = function (id) {
             CoverLetterTemplate.get({id: id}, function(result) {
@@ -38,12 +39,25 @@ angular.module('jhtestApp')
                 CoverLetterTemplate.save($scope.coverLetterTemplate, onSaveFinished);
             }
         };
-        var onUpdateFinished = function (result) {
+        $scope.putPlaceholder = function(placeholder) {
+            if (placeholder && $scope.coverLetterTemplate && $scope.coverLetterTemplate.text) {
+                $rootScope.$broadcast('insertText', '[' + placeholder.placeholder + ']');
+            }
+        };
+        var onUpdateFinished = function(result) {
             $scope.$emit('jhtestApp:coverLetterTemplateUpdate', result);
             $state.go('coverLetterTemplate.detail');
         };
-        var onSaveFinished = function (result) {
+        var onSaveFinished = function(result) {
             $scope.$emit('jhtestApp:coverLetterTemplateUpdate', result);
             $state.go('coverLetterTemplate');
         };
+
+        var loadPlaceholders = function() {
+            CoverLetterTemplatePlaceholder.getAll().then(function(result) {
+                $scope.placeholders = result;
+            });
+        };
+
+        loadPlaceholders();
     }]);

@@ -96,6 +96,10 @@ only screen and (                min-resolution: 2dppx) {
     cursor: pointer;
 }
 
+.clickable {
+    cursor: pointer;
+}
+
 #threadDump .popover, #healthCheck .popover {
     top: inherit;
     display: block;

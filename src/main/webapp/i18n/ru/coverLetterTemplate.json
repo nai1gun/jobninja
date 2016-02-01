@@ -17,7 +17,22 @@
             },
             "name": "Название",
             "text": "Текст",
-            "empty": "Пустое"
+            "empty": "Пустое",
+            "placeholders": "Переменные",
+            "templatePlaceholder": {
+                "position": {
+                    "placeholder": "должность",
+                    "title": "Название должности"
+                },
+                "company": {
+                    "placeholder": "компания",
+                    "title": "Название компании"
+                },
+                "location": {
+                    "placeholder": "место",
+                    "title": "Местоположение"
+                }
+            }
         }
     }
 }

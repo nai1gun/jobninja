@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('jhtestApp')
-    .controller('PositionDetailController', ['$scope', '$rootScope', '$stateParams', '$state', '$timeout', 'entity', 'Position', 'PositionState', 'DateUtils', 'ColorUtils', 'PositionUtils', 'CoverLetterTemplate', 'ParseLinks', 'Glassdoor', '$translate',
-        function ($scope, $rootScope, $stateParams, $state, $timeout, entity, Position, PositionState, DateUtils, ColorUtils, PositionUtils, CoverLetterTemplate, ParseLinks, Glassdoor, $translate) {
+    .controller('PositionDetailController', ['$scope', '$rootScope', '$stateParams', '$state', '$timeout', 'entity', 'Position', 'PositionState', 'DateUtils', 'ColorUtils', 'PositionUtils', 'CoverLetterTemplate', 'CoverLetterTemplatePlaceholder', 'ParseLinks', 'Glassdoor', '$translate',
+        function ($scope, $rootScope, $stateParams, $state, $timeout, entity, Position, PositionState, DateUtils, ColorUtils, PositionUtils, CoverLetterTemplate, CoverLetterTemplatePlaceholder, ParseLinks, Glassdoor, $translate) {
         $scope.position = entity;
         $scope.editing = $state.$current.data.editing;
         $scope.defaultCoverLetterTemplate = {};
@@ -43,7 +43,9 @@ angular.module('jhtestApp')
                 $scope.editStart();
             }
             if (coverLetterTemplate) {
-                $scope.position.coverLetter = coverLetterTemplate.text;
+                CoverLetterTemplatePlaceholder.resolve(coverLetterTemplate.text, $scope.position).then(function(text) {
+                    $scope.position.coverLetter = text;
+                })
             } else {
                 $scope.position.coverLetter = '';
             }
