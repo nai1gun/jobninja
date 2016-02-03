@@ -17,6 +17,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -25,6 +26,8 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
+import org.springframework.security.web.authentication.RememberMeServices;
+import org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.inject.Inject;
@@ -45,6 +48,17 @@ public class OAuth2ServerConfiguration {
         @Inject
         private SocialAuthFilter socialAuthFilter;
 
+        @Inject
+        private Environment environment;
+
+        @Inject
+        UserDetailsService userDetailsService;
+
+        @Bean
+        public RememberMeServices rememberMeServices() {
+            return new TokenBasedRememberMeServices(environment.getProperty("jhipster.security.rememberme.key"), userDetailsService);
+        }
+
         @Override
         public void configure(HttpSecurity http) throws Exception {
             http
@@ -64,6 +78,10 @@ public class OAuth2ServerConfiguration {
             .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and()
+                .rememberMe()
+                .rememberMeServices(rememberMeServices())
+                .key(environment.getProperty("jhipster.security.rememberme.key"))
             .and()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
