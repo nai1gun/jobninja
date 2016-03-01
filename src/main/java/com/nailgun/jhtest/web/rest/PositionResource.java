@@ -112,6 +112,20 @@ public class PositionResource {
     }
 
     /**
+     * GET /positions/find -> get all the positions.
+     */
+    @RequestMapping(value = "/positions/find",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<Position>> findPositions(@RequestParam String link)
+        throws URISyntaxException {
+        User currentUser = userService.getUserWithAuthorities();
+        List<Position> positions = positionRepository.findByLink(currentUser.getId(), link);
+        return new ResponseEntity<>(positions, HttpStatus.OK);
+    }
+
+    /**
      * DELETE  /positions/:id -> delete the "id" position.
      */
     @RequestMapping(value = "/positions/{id}",
