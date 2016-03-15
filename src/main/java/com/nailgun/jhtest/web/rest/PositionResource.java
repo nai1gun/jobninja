@@ -54,7 +54,7 @@ public class PositionResource {
         position.setUser(currentUser);
         Position result = positionRepository.save(position);
         return ResponseEntity.created(new URI("/api/positions/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("position", result.getId().toString()))
+                .headers(HeaderUtil.createEntityCreationAlert("position", result.getId()))
                 .body(result);
     }
 
@@ -74,7 +74,7 @@ public class PositionResource {
         position.setUser(currentUser);
         Position result = positionRepository.save(position);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("position", position.getId().toString()))
+                .headers(HeaderUtil.createEntityUpdateAlert("position", position.getId()))
                 .body(result);
     }
 
@@ -135,6 +135,6 @@ public class PositionResource {
     public ResponseEntity<Void> delete(@PathVariable String id) {
         log.debug("REST request to delete Position : {}", id);
         positionRepository.delete(id);
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("position", id.toString())).build();
+        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("position", id)).build();
     }
 }
