@@ -7,8 +7,10 @@ import com.nailgun.jhtest.repository.PositionRepository;
 import com.nailgun.jhtest.service.UserService;
 import com.nailgun.jhtest.web.rest.util.HeaderUtil;
 import com.nailgun.jhtest.web.rest.util.PaginationUtil;
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.MessageSource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpHeaders;
@@ -21,6 +23,7 @@ import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 /**
@@ -38,6 +41,9 @@ public class PositionResource {
     @Inject
     private UserService userService;
 
+    @Inject
+    private MessageSource messageSource;
+
     /**
      * POST  /positions -> Create a new position.
      */
@@ -52,6 +58,17 @@ public class PositionResource {
         }
         User currentUser = userService.getUserWithAuthorities();
         position.setUser(currentUser);
+        if (position.getState() == null) {
+            Locale locale = Locale.forLanguageTag(currentUser.getLangKey());
+            String createdState = messageSource.getMessage("position.state.created", null, locale);
+            position.setState(createdState);
+        }
+        if (position.getCreated() == null) {
+            position.setCreated(new DateTime());
+        }
+        if (position.getEdited() == null) {
+            position.setEdited(new DateTime());
+        }
         Position result = positionRepository.save(position);
         return ResponseEntity.created(new URI("/api/positions/" + result.getId()))
                 .headers(HeaderUtil.createEntityCreationAlert("position", result.getId()))
