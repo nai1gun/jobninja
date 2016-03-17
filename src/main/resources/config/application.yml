@@ -27,8 +27,8 @@ authentication:
     oauth:
         clientid: jhtestapp
         secret: mySecretOAuthSecret
-        # Token is valid 30 minutes
-        tokenValidityInSeconds: 1800
+        # Token is valid 30 days
+        tokenValidityInSeconds: 2592000
 
 swagger:
     title: jhtest API
