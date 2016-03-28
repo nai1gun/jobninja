@@ -41,6 +41,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th></th>
                     <th translate="jhtestApp.position.name">Name</th>
                     <th translate="jhtestApp.position.company">Company</th>
                     <th translate="jhtestApp.position.link">Link</th>
@@ -51,6 +52,9 @@
             </thead>
             <tbody>
                 <tr ng-repeat="position in positions">
+                    <td>
+                        <img class="position-list-company-logo" ng-if="position.companyLogoUrl" ng-src="{{position.companyLogoUrl}}"/>
+                    </td>
                     <td>{{position.name}}</td>
                     <td>{{position.company}}</td>
                     <td>

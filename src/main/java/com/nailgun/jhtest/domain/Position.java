@@ -63,6 +63,9 @@ public class Position implements Serializable {
 
     private Cv cv;
 
+    @Field("companyLogoUrl")
+    private String companyLogoUrl;
+
     public String getId() {
         return id;
     }
@@ -159,6 +162,14 @@ public class Position implements Serializable {
         this.cv = cv;
     }
 
+    public String getCompanyLogoUrl() {
+        return companyLogoUrl;
+    }
+
+    public void setCompanyLogoUrl(String companyLogoUrl) {
+        this.companyLogoUrl = companyLogoUrl;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -193,6 +204,7 @@ public class Position implements Serializable {
                 ", edited='" + edited + "'" +
                 ", notes='" + notes + "'" +
                 ", coverLeter='" + coverLetter + "'" +
+                ", companyLogoUrl='" + companyLogoUrl + "'" +
                 '}';
     }
 }

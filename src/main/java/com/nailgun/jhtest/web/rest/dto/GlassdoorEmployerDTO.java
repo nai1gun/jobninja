@@ -10,9 +10,12 @@ public class GlassdoorEmployerDTO {
 
     private double rating;
 
-    public GlassdoorEmployerDTO(String url, double rating) {
+    private String logoUrl;
+
+    public GlassdoorEmployerDTO(String url, double rating, String logoUrl) {
         this.url = url;
         this.rating = rating;
+        this.logoUrl = logoUrl;
     }
 
     public GlassdoorEmployerDTO() {
@@ -32,5 +35,13 @@ public class GlassdoorEmployerDTO {
 
     public void setRating(double rating) {
         this.rating = rating;
+    }
+
+    public String getLogoUrl() {
+        return logoUrl;
+    }
+
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl;
     }
 }

@@ -1,14 +1,18 @@
 package com.nailgun.jhtest.service;
 
+import com.nailgun.jhtest.domain.Position;
+import com.nailgun.jhtest.repository.PositionRepository;
 import com.nailgun.jhtest.service.dto.GlassdoorEmployer;
 import com.nailgun.jhtest.service.dto.GlassdoorResponse;
 import com.nailgun.jhtest.web.rest.dto.GlassdoorEmployerDTO;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import javax.inject.Inject;
 import java.util.List;
 
 /**
@@ -25,8 +29,11 @@ public class GlassdoorService {
 
     private final Logger log = LoggerFactory.getLogger(GlassdoorService.class);
 
-    @Autowired
+    @Inject
     private RestTemplate restTemplate;
+
+    @Inject
+    private PositionRepository positionRepository;
 
     public GlassdoorEmployerDTO glassDoorUrl(String companyName) throws GlassdoorException {
         GlassdoorResponse glassdoorResponse = restTemplate.getForObject(GET_EMPLOYER_TEMPLATE,
@@ -44,7 +51,26 @@ public class GlassdoorService {
         }
         GlassdoorEmployer employer = employers.get(0);
         return new GlassdoorEmployerDTO(
-            String.format(GLASSDOOR_URL_TEMPLATE, employer.getName(), employer.getId()), employer.getOverallRating());
+            String.format(GLASSDOOR_URL_TEMPLATE, employer.getName(), employer.getId()), employer.getOverallRating(),
+            employer.getSquareLogo());
+    }
+
+    @Async
+    public void getAndSaveCompanyLogoUrl(Position position) {
+        if (position.getId() == null) {
+            throw new IllegalArgumentException("No position id");
+        }
+        if (StringUtils.isEmpty(position.getCompany())) {
+            return;
+        }
+        GlassdoorEmployerDTO glassdoorEmployer;
+        try {
+            glassdoorEmployer = glassDoorUrl(position.getCompany());
+        } catch (GlassdoorException e) {
+            throw new RuntimeException(e);
+        }
+        position.setCompanyLogoUrl(glassdoorEmployer.getLogoUrl());
+        positionRepository.save(position);
     }
 
     public static class GlassdoorException extends Exception {}

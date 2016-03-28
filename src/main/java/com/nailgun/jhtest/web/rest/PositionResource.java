@@ -4,6 +4,7 @@ import com.codahale.metrics.annotation.Timed;
 import com.nailgun.jhtest.domain.Position;
 import com.nailgun.jhtest.domain.User;
 import com.nailgun.jhtest.repository.PositionRepository;
+import com.nailgun.jhtest.service.GlassdoorService;
 import com.nailgun.jhtest.service.UserService;
 import com.nailgun.jhtest.web.rest.util.HeaderUtil;
 import com.nailgun.jhtest.web.rest.util.PaginationUtil;
@@ -44,6 +45,9 @@ public class PositionResource {
     @Inject
     private MessageSource messageSource;
 
+    @Inject
+    private GlassdoorService glassdoorService;
+
     /**
      * POST  /positions -> Create a new position.
      */
@@ -70,6 +74,7 @@ public class PositionResource {
             position.setEdited(new DateTime());
         }
         Position result = positionRepository.save(position);
+        glassdoorService.getAndSaveCompanyLogoUrl(position);
         return ResponseEntity.created(new URI("/api/positions/" + result.getId()))
                 .headers(HeaderUtil.createEntityCreationAlert("position", result.getId()))
                 .body(result);
@@ -90,6 +95,7 @@ public class PositionResource {
         User currentUser = userService.getUserWithAuthorities();
         position.setUser(currentUser);
         Position result = positionRepository.save(position);
+        glassdoorService.getAndSaveCompanyLogoUrl(position);
         return ResponseEntity.ok()
                 .headers(HeaderUtil.createEntityUpdateAlert("position", position.getId()))
                 .body(result);

@@ -15,6 +15,8 @@ public class GlassdoorEmployer {
 
     private double overallRating;
 
+    private String squareLogo;
+
     public String getId() {
         return id;
     }
@@ -37,5 +39,13 @@ public class GlassdoorEmployer {
 
     public void setOverallRating(double overallRating) {
         this.overallRating = overallRating;
+    }
+
+    public String getSquareLogo() {
+        return squareLogo;
+    }
+
+    public void setSquareLogo(String squareLogo) {
+        this.squareLogo = squareLogo;
     }
 }
