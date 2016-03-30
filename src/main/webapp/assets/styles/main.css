@@ -362,3 +362,19 @@ select.form-control[disabled] {
     width: 30px;
     height: 30px;
 }
+
+.sortable {
+    cursor: pointer;
+}
+
+.sort-desc:after {
+    content: '\25BC';
+    font-size: 0.75em;
+    margin-left: 3px;
+}
+
+.sort-asc:after {
+    content: '\25B2';
+    font-size: 0.75em;
+    margin-left: 3px;
+}

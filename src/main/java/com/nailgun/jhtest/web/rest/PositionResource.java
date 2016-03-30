@@ -109,11 +109,14 @@ public class PositionResource {
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<List<Position>> getAll(@RequestParam(value = "page" , required = false) Integer offset,
-                                  @RequestParam(value = "per_page", required = false) Integer limit)
+          @RequestParam(value = "per_page", required = false) Integer limit,
+          @RequestParam(value = "sort", required = false, defaultValue = "edited") String sort,
+          @RequestParam(value = "asc", required = false, defaultValue = "false") boolean asc)
         throws URISyntaxException {
         User currentUser = userService.getUserWithAuthorities();
+        Sort.Direction direction = asc ? Sort.Direction.ASC : Sort.Direction.DESC;
         Page<Position> page = positionRepository.findByUser(currentUser.getId(),
-            PaginationUtil.generatePageRequest(offset, limit, Sort.Direction.DESC, "edited"));
+            PaginationUtil.generatePageRequest(offset, limit, direction, sort));
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/positions", offset, limit);
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

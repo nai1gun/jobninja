@@ -42,11 +42,26 @@
             <thead>
                 <tr>
                     <th></th>
-                    <th translate="jhtestApp.position.name">Name</th>
-                    <th translate="jhtestApp.position.company">Company</th>
-                    <th translate="jhtestApp.position.link">Link</th>
-                    <th translate="jhtestApp.position.state">State</th>
-                    <th translate="jhtestApp.position.edited">Edited</th>
+                    <th>
+                        <span class="sortable" ng-class="getSortClass('name')"
+                              ng-click="changeSort('name')" translate="jhtestApp.position.name">Name</span>
+                    </th>
+                    <th>
+                        <span class="sortable" ng-class="getSortClass('company')"
+                              ng-click="changeSort('company')" translate="jhtestApp.position.company">Company</span>
+                    </th>
+                    <th>
+                        <span class="sortable" ng-class="getSortClass('link')"
+                              ng-click="changeSort('link')" translate="jhtestApp.position.link">Link</span>
+                    </th>
+                    <th>
+                        <span class="sortable" ng-class="getSortClass('state')"
+                              ng-click="changeSort('state')" translate="jhtestApp.position.state">State</span>
+                    </th>
+                    <th>
+                        <span class="sortable" ng-class="getSortClass('edited')"
+                              ng-click="changeSort('edited')" translate="jhtestApp.position.edited">Edited</span>
+                    </th>
                     <th></th>
                 </tr>
             </thead>

@@ -4,8 +4,13 @@ angular.module('jhtestApp')
     .controller('PositionController', ['$scope', 'Position', 'ParseLinks', function ($scope, Position, ParseLinks) {
         $scope.positions = [];
         $scope.page = 1;
+        $scope.order = {
+            sort: 'edited',
+            asc: false
+        };
         $scope.loadAll = function() {
-            Position.query({page: $scope.page, per_page: 20}, function(result, headers) {
+            Position.query({page: $scope.page, per_page: 20, sort: $scope.order.sort, asc: $scope.order.asc},
+                function(result, headers) {
                 $scope.links = ParseLinks.parse(headers('link'));
                 $scope.positions = result;
             });
@@ -14,7 +19,6 @@ angular.module('jhtestApp')
             $scope.page = page;
             $scope.loadAll();
         };
-        $scope.loadAll();
 
         $scope.delete = function (id) {
             Position.get({id: id}, function(result) {
@@ -45,5 +49,17 @@ angular.module('jhtestApp')
             return $scope.links && $scope.links.last > 1;
         };
 
+        $scope.changeSort = function(field) {
+            $scope.order.asc = $scope.order.sort === field ? !$scope.order.asc : false;
+            $scope.order.sort = field;
+            $scope.loadAll();
+        };
+
+        $scope.getSortClass = function(field) {
+            return $scope.order.sort === field ? $scope.order.asc ? 'sort-asc' : 'sort-desc' : '';
+        };
+
         $scope.makeHref = ParseLinks.makeHref;
+
+        $scope.loadAll();
     }]);
