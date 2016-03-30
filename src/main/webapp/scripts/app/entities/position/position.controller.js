@@ -50,7 +50,7 @@ angular.module('jhtestApp')
         };
 
         $scope.changeSort = function(field) {
-            $scope.order.asc = $scope.order.sort === field ? !$scope.order.asc : false;
+            $scope.order.asc = $scope.order.sort === field ? !$scope.order.asc : true;
             $scope.order.sort = field;
             $scope.loadAll();
         };
