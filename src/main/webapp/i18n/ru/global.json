@@ -10,6 +10,7 @@
                 "coverLetterTemplate": "Шаблоны сопроводительных писем",
                 "additionalEntity": "JHipster will add additional entities here (do not translate!)"
             },
+            "chrome": "Расширение для Chrome",
             "account": {
                 "main": "Профиль",
                 "settings": "Настройки",
