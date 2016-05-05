@@ -13,6 +13,11 @@
             "cv": "Attaching your CV for each position",
             "coverLetter": "Creating a cover letter by predefined template",
             "try": "And much more. Just <a href=\"/#/register\">try it out</a>! It's easy."
+        },
+        "chromeExtension": {
+            "title": "Chrome extension",
+            "body": "You can also take a look at the <a href=\"https://chrome.google.com/webstore/detail/job-ninja/opjapjbbocailbopankcobhclofcbhnn\" target=\"_blank\">Job Ninja Chrome extension</a>. It allows to a Job Ninja position in just one click!",
+            "install": "Click here to install the Job Ninja extension."
         }
     }
 }

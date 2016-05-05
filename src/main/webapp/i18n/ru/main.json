@@ -13,6 +13,11 @@
             "cv": "Добавление резюме",
             "coverLetter": "Создание сопроводительных писем по шаблонам",
             "try": "И многое другое. <a href=\"/#/register\">Попробуйте сами</a>! Это просто."
+        },
+        "chromeExtension": {
+            "title": "Расшарение для Chrome",
+            "body": "Обратите внимание на <a href=\"https://chrome.google.com/webstore/detail/job-ninja/opjapjbbocailbopankcobhclofcbhnn\" target=\"_blank\">расширение Job Ninja для Chrome</a>. Оно позаоляет добавлять должности в Job Ninja всего в один клик!",
+            "install": "Нажмите чтобы установить расширение Job Ninja для Chrome."
         }
     }
 }
