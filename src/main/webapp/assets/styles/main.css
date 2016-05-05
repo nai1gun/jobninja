@@ -378,3 +378,7 @@ select.form-control[disabled] {
     font-size: 0.75em;
     margin-left: 3px;
 }
+
+.job-ninja-features {
+    margin-left: -23px;
+}

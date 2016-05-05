@@ -18,16 +18,38 @@
                 <a class="btn btn-sm btn-success" href="/#/register">Sign up for free</a> or <a href="/#/login">log in</a> to see how it works.
             </p>
             <p>
-                <h4 translate="main.features.title">Key features:</h4>
-                <ul>
-                    <li translate="main.features.positions">Creating and editing a list of interesting positions</li>
-                    <li translate="main.features.tracking">Tracking a position by its state</li>
-                    <li translate="main.features.cv">Attaching your CV for each position</li>
-                    <li translate="main.features.coverLetter">Creating a cover letter by predefined template</li>
-                </ul>
-                <span translate="main.features.try">
-                    And much more. Just <a href='/#/register'>try it out</a>! It's easy.
-                </span>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title" translate="main.features.title">Key features:</h4>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="job-ninja-features">
+                            <li translate="main.features.positions">Creating and editing a list of interesting positions</li>
+                            <li translate="main.features.tracking">Tracking a position by its state</li>
+                            <li translate="main.features.cv">Attaching your CV for each position</li>
+                            <li translate="main.features.coverLetter">Creating a cover letter by predefined template</li>
+                        </ul>
+                        <span translate="main.features.try">
+                            And much more. Just <a href='/#/register'>try it out</a>! It's easy.
+                        </span>
+                    </div>
+                </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Chrome extension</h3>
+                    </div>
+                    <div class="panel-body">
+                        You can also take a look at the <a href="https://chrome.google.com/webstore/detail/job-ninja/opjapjbbocailbopankcobhclofcbhnn" target="_blank">Job Ninja Chrome extension</a>.
+                        It allows to a Job Ninja position in just one click!
+                    </div>
+                    <div class="panel-footer" ng-if="canInstallExtension()">
+                        <b>
+                            <a href="javascript:void(0);" ng-click="installExtension()">
+                                Click here to install the Job Ninja extension.
+                            </a>
+                        </b>
+                    </div>
+                </div>
             </p>
         </div>
     </div>
