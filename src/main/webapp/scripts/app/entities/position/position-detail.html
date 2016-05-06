@@ -113,7 +113,8 @@
                             class="glassdoor-rating"></span>
                         &nbsp;&nbsp;
                         <a ng-href="{{getGlassdoorEntry().url}}" target="_blank">
-                            <span translate="jhtestApp.position.glassdoor.see">See on GlassDoor</span> <span class="glyphicon glyphicon-new-window"></span>
+                            <span translate="jhtestApp.position.glassdoor.see">See on GlassDoor</span>&nbsp;
+                            <span class="glyphicon glyphicon-new-window"></span>
                         </a>
                     </span>
                 </td>
@@ -132,7 +133,7 @@
         <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
     </button>
     <button type="submit" ng-if="editing" class="btn btn-success">
-        <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        <span class="fa fa-floppy-o"></span>&nbsp;<span translate="entity.action.save">Save</span>
     </button>
     <button type="button" ng-if="!hasCV()" class="btn btn-default" ng-click="editCV()">
         <span class="glyphicon glyphicon-paperclip"></span>&nbsp;<span translate="jhtestApp.position.action.addCv">Add CV</span>
