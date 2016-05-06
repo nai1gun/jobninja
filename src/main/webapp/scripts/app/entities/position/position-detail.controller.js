@@ -8,6 +8,7 @@ angular.module('jhtestApp')
         $scope.defaultCoverLetterTemplate = {};
         $scope.coverLetterTemplates = [];
         $scope.glassdoorEntries = {};
+        $scope.coverLetterTemplatePopover = '/scripts/app/entities/position/cover-letter-template-popover.html';
 
         $scope.load = function (id) {
             Position.get({id: id}, function(result) {
