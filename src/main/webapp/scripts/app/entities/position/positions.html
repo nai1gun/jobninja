@@ -68,13 +68,18 @@
             <tbody>
                 <tr ng-repeat="position in positions">
                     <td>
-                        <img class="position-list-company-logo" ng-if="position.companyLogoUrl" ng-src="{{position.companyLogoUrl}}"/>
+                        <a ui-sref="position.detail({id:position.id})">
+                            <img class="position-list-company-logo"
+                                 ng-if="position.companyLogoUrl" ng-src="{{position.companyLogoUrl}}"/>
+                        </a>
                     </td>
-                    <td>{{position.name}}</td>
+                    <td>
+                        <a ui-sref="position.detail({id:position.id})">{{position.name}}</a>
+                    </td>
                     <td>{{position.company}}</td>
                     <td>
                         <a ng-href="{{makeHref(position.link)}}" target="_blank">
-                            {{position.link | characters:30}}
+                            {{position.link | characters:30}} <span class="glyphicon glyphicon-new-window"></span>
                         </a>
                     </td>
                     <td>{{position.state}}</td>
