@@ -48,7 +48,11 @@
             </thead>
             <tbody>
                 <tr ng-repeat="coverLetterTemplate in coverLetterTemplates">
-                    <td>{{coverLetterTemplate.name}}</td>
+                    <td>
+                        <a ui-sref="coverLetterTemplate.detail({id:coverLetterTemplate.id})">
+                            {{coverLetterTemplate.name}}
+                        </a>
+                    </td>
                     <td>{{textPreview(coverLetterTemplate.text)}}</td>
                     <td class="td-actions">
                         <a ui-sref="coverLetterTemplate.detail({id:coverLetterTemplate.id})"
@@ -58,7 +62,7 @@
                         <button type="submit"
                                 ng-click="delete(coverLetterTemplate.id)"
                                 class="btn btn-default btn-sm btn-delete">
-                            <span class="glyphicon glyphicon-trash"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                            <span class="glyphicon glyphicon-trash"></span>
                         </button>
                     </td>
                 </tr>
