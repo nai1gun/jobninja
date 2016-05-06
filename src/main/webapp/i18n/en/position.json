@@ -25,6 +25,11 @@
             "edited": "Edited",
             "notes": "Notes",
             "coverLetter": "Cover letter",
+            "coverLetterTemplates": {
+                "button": "Cover letter templates",
+                "hintBegin": "You can create reusable cover letter templates on the",
+                "hintLink": "cover letter templates page"
+            },
             "cv": "CV",
             "cvHint": "Or choose one of listed above",
             "action": {

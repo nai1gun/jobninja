@@ -161,8 +161,10 @@
                 </ul>
             </div>
         </span>
-        <button type="button" class="btn btn-default" popover-template="coverLetterTemplatePopover">
-            <span class="glyphicon glyphicon-question-sign"></span>&nbsp;<span>cover letter templates</span>
+        <button type="button" class="btn btn-default" popover-template="coverLetterTemplatePopover"
+            ng-if="!coverLetterTemplates.length">
+            <span class="glyphicon glyphicon-question-sign"></span>&nbsp;
+            <span translate="jhtestApp.position.coverLetterTemplates.button">Cover letter templates</span>
         </button>
     </span>
 </form>
