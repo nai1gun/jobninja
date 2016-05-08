@@ -382,3 +382,7 @@ select.form-control[disabled] {
 .job-ninja-features {
     margin-left: -23px;
 }
+
+.nowrap {
+    white-space: nowrap;
+}
