@@ -20,7 +20,7 @@
             "location": "Location",
             "link": "Link",
             "state": "State",
-            "defaultStates": "Created,Applied,Got response,Invited for interview,Got offer,They refused,I refused",
+            "defaultStates": "Created,Applied,Got response,Invited for interview,Got offer,They refused,I refused,Not relevant",
             "createdAt": "Created",
             "edited": "Edited",
             "notes": "Notes",
